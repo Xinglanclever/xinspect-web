@@ -7,7 +7,7 @@
 (function () {
   "use strict";
 
-  var VERSION = "20261104-v3";
+  var VERSION = "20261104-v4";
   var THEMES = {
     dark: { href: "./gemini-redesign-dark.css?v=" + VERSION, label: "\u2600 \u6DFA\u8272", title: "\u5207\u63DB\u5230\u745E\u58EB\u6DFA\u8272\u4E3B\u984C" },
     light: { href: "./gemini-redesign-light.css?v=" + VERSION, label: "\u263E \u6DF1\u8272", title: "\u5207\u63DB\u5230\u5BE6\u9A57\u5BA4\u6DF1\u8272\u4E3B\u984C" }

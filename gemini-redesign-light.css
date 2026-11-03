@@ -847,3 +847,6 @@ input, textarea, select {
   font-style: normal !important;
   text-shadow: none !important;
 }
+
+/* 隱藏站點原生的明暗切換（外觀由覆蓋主題統一控制，避免兩個開關混淆） */
+.theme-toggle, #themeToggle { display: none !important; }

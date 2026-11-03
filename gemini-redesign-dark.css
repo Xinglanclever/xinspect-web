@@ -867,3 +867,6 @@ body {
   background: rgba(34, 211, 238, 0.15) !important;
   border-color: #22d3ee !important;
 }
+
+/* 隱藏站點原生的明暗切換（外觀由覆蓋主題統一控制，避免兩個開關混淆） */
+.theme-toggle, #themeToggle { display: none !important; }
