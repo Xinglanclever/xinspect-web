@@ -1,0 +1,159 @@
+/* XinSpect motion layer — load after styles.css. Content remains visible if JS is absent. */
+:root {
+  --motion-ease: cubic-bezier(.22, .75, .24, 1);
+  --motion-duration: .56s;
+}
+
+/* Scroll progress is inserted by motion.js; it is visual feedback only. */
+.motion-progress {
+  position: fixed;
+  z-index: 60;
+  inset: 0 0 auto;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--brand-blue), #94bced 70%, var(--blue));
+  pointer-events: none;
+}
+
+/* JS adds .motion-ready only after the observer is available, so no-JS stays fully visible. */
+.motion-ready .hero-content > *,
+.motion-ready .truth-banner,
+.motion-ready .section-block,
+.motion-ready .evidence-section,
+.motion-ready .privacy-section,
+.motion-ready .download-section,
+.motion-ready .ai-status-card,
+.motion-ready .privacy-card,
+.motion-ready .requirements-card,
+.motion-ready .download-card,
+.motion-ready .report-panel,
+.motion-ready .support-card {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--motion-duration) var(--motion-ease), transform var(--motion-duration) var(--motion-ease);
+}
+.motion-ready .hero-content > *.is-motion-visible,
+.motion-ready .truth-banner.is-motion-visible,
+.motion-ready .section-block.is-motion-visible,
+.motion-ready .evidence-section.is-motion-visible,
+.motion-ready .privacy-section.is-motion-visible,
+.motion-ready .download-section.is-motion-visible,
+.motion-ready .ai-status-card.is-motion-visible,
+.motion-ready .privacy-card.is-motion-visible,
+.motion-ready .requirements-card.is-motion-visible,
+.motion-ready .download-card.is-motion-visible,
+.motion-ready .report-panel.is-motion-visible,
+.motion-ready .support-card.is-motion-visible {
+  opacity: 1;
+  transform: none;
+}
+.motion-ready .hero-content > *:nth-child(2) { transition-delay: .06s; }
+.motion-ready .hero-content > *:nth-child(3) { transition-delay: .12s; }
+.motion-ready .hero-content > *:nth-child(4) { transition-delay: .18s; }
+.motion-ready .hero-content > *:nth-child(5) { transition-delay: .24s; }
+
+.motion-ready .metric-card,
+.motion-ready .feature-card,
+.motion-ready .source-item,
+.motion-ready .evidence-card,
+.motion-ready .status-panel,
+.motion-ready .trust-panel,
+.motion-ready .privacy-points > div,
+.motion-ready .privacy-card,
+.motion-ready .requirements-card,
+.motion-ready .doc-card,
+.motion-ready .history-item,
+.motion-ready .verification-card {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .46s var(--motion-ease), transform .46s var(--motion-ease), border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.motion-ready .is-motion-visible .metric-card,
+.motion-ready .is-motion-visible .feature-card,
+.motion-ready .is-motion-visible .source-item,
+.motion-ready .is-motion-visible .evidence-card,
+.motion-ready .is-motion-visible .status-panel,
+.motion-ready .is-motion-visible .trust-panel,
+.motion-ready .is-motion-visible .privacy-points > div,
+.motion-ready .is-motion-visible .privacy-card,
+.motion-ready .is-motion-visible .requirements-card,
+.motion-ready .is-motion-visible .doc-card,
+.motion-ready .is-motion-visible .history-item,
+.motion-ready .is-motion-visible .verification-card,
+.motion-ready .metric-card.is-motion-visible,
+.motion-ready .feature-card.is-motion-visible,
+.motion-ready .source-item.is-motion-visible,
+.motion-ready .evidence-card.is-motion-visible,
+.motion-ready .privacy-card.is-motion-visible,
+.motion-ready .requirements-card.is-motion-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.motion-ready .metric-card:nth-child(2), .motion-ready .feature-card:nth-child(2), .motion-ready .evidence-card:nth-child(2), .motion-ready .source-item:nth-child(2) { transition-delay: .07s; }
+.motion-ready .metric-card:nth-child(3), .motion-ready .feature-card:nth-child(3), .motion-ready .evidence-card:nth-child(3), .motion-ready .source-item:nth-child(3) { transition-delay: .14s; }
+.motion-ready .feature-card:nth-child(4), .motion-ready .source-item:nth-child(4) { transition-delay: .21s; }
+.motion-ready .feature-card:nth-child(5) { transition-delay: .28s; }
+.motion-ready .feature-card:nth-child(6) { transition-delay: .35s; }
+
+.metric-card:hover, .feature-card:hover, .evidence-card:hover, .status-panel:hover, .trust-panel:hover, .privacy-card:hover, .requirements-card:hover, .privacy-points > div:hover {
+  border-color: color-mix(in srgb, var(--blue) 38%, var(--line));
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--ink) 8%, transparent);
+}
+.feature-card:hover .feature-icon, .evidence-card:hover .evidence-symbol { transform: translateY(-2px); }
+.feature-icon, .evidence-symbol { transition: transform .2s ease; }
+
+/* Keep small interaction feedback tactile without making touch surfaces jump. */
+@media (hover: hover) and (pointer: fine) {
+  .button:hover, .icon-button:hover, .top-github:hover, .sidebar-github:hover,
+  .board-control:hover, .text-link:hover, .board-reference:hover { transform: translateY(-1px); }
+}
+.button:active, .icon-button:active, .board-control:active { transform: translateY(0); }
+.button, .icon-button, .top-github, .sidebar-github, .board-control, .text-link, .board-reference {
+  transition: transform .2s var(--motion-ease), color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.metric-card:focus-within, .feature-card:focus-within, .evidence-card:focus-within,
+.status-panel:focus-within, .trust-panel:focus-within, .privacy-card:focus-within,
+.requirements-card:focus-within, .doc-card:focus-within, .verification-card:focus-within {
+  border-color: color-mix(in srgb, var(--blue) 38%, var(--line));
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.nav-link:focus-visible, .button:focus-visible, .text-link:focus-visible, .section-source:focus-visible,
+.hero-text-link:focus-visible, .top-github:focus-visible, .sidebar-github:focus-visible,
+.icon-button:focus-visible, select:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--blue) 65%, transparent);
+  outline-offset: 3px;
+}
+.nav-link.is-scroll-active { box-shadow: inset 3px 0 0 var(--brand-blue); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .motion-progress { display: none; }
+  .motion-ready .hero-content > *, .motion-ready .truth-banner, .motion-ready .section-block,
+  .motion-ready .evidence-section, .motion-ready .privacy-section, .motion-ready .download-section,
+  .motion-ready .ai-status-card, .motion-ready .privacy-card, .motion-ready .requirements-card,
+  .motion-ready .download-card, .motion-ready .report-panel, .motion-ready .support-card,
+  .motion-ready .metric-card, .motion-ready .feature-card, .motion-ready .source-item,
+  .motion-ready .evidence-card, .motion-ready .status-panel, .motion-ready .trust-panel,
+  .motion-ready .privacy-points > div, .motion-ready .doc-card, .motion-ready .history-item,
+  .motion-ready .verification-card { opacity: 1; transform: none; }
+}
+
+/* XinSpect's own four-tile emblem: one gentle turn, then a long reading pause. */
+@keyframes xinspect-emblem-turn {
+  0%, 72% { transform: rotate(-8deg); }
+  100% { transform: rotate(352deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .brand-lockup > .brand-mark {
+    animation: xinspect-emblem-turn 16s cubic-bezier(.4, 0, .2, 1) infinite;
+    transform-origin: 50% 50%;
+  }
+  .brand-lockup > .brand-mark:hover { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-lockup > .brand-mark { animation: none !important; transform: rotate(-8deg); }
+}

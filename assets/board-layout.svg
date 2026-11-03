@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="board-map" viewBox="0 0 440 390" role="img" aria-labelledby="boardMapTitle boardMapDesc">
+  <title id="boardMapTitle">主機板接口通用示意</title>
+  <desc id="boardMapDesc">俯視示意：CPU 插座在上半部，四條 DIMM 在右側，PCIe 在下半部，M.2 與 SATA 分開，頂部為 2×4 的 EPS 供電，右緣為 2×12 的 ATX 主供電。不是特定型號或接線圖。</desc>
+  <defs>
+    <pattern id="boardGrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#d9ded5" stroke-width=".5"/></pattern>
+    <pattern id="cpuContacts" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".75" fill="#a6a38b"/></pattern>
+    <pattern id="slotContacts" width="5" height="6" patternUnits="userSpaceOnUse"><path d="M2 0v6" stroke="#c6b67e" stroke-width="1.5"/></pattern>
+    <pattern id="dimmContacts" width="6" height="5" patternUnits="userSpaceOnUse"><path d="M0 2h6" stroke="#b8b4a4" stroke-width="1"/></pattern>
+  </defs>
+  <rect x="0" y="0" width="440" height="390" fill="url(#boardGrid)"/>
+  <path d="M47 24H385V356H47Z" fill="#e2e6dc" stroke="#4b6059" stroke-width="2"/>
+  <g fill="#f4f2e9" stroke="#738278" stroke-width="1.3"><circle cx="60" cy="37" r="4"/><circle cx="372" cy="37" r="4"/><circle cx="60" cy="343" r="4"/><circle cx="372" cy="343" r="4"/><circle cx="372" cy="225" r="4"/></g>
+  <g class="board-neutral" fill="#82928b" stroke="#4b6059" stroke-width="1.4">
+    <rect x="37" y="69" width="42" height="127" rx="2"/><path d="M43 87h30M43 111h30M43 144h30M43 178h30" fill="none"/>
+    <rect x="105" y="73" width="14" height="105" rx="2"/><rect x="128" y="56" width="100" height="14" rx="2"/>
+    <rect x="263" y="261" width="52" height="49" rx="3"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="8" fill="#5b6b63" letter-spacing="1"><text x="23" y="140" transform="rotate(-90 23 140)">REAR I/O</text><text x="289" y="290" text-anchor="middle" fill="#f5f3e9">PCH</text><text x="115" y="339">GENERIC BOARD · TOP VIEW</text></g>
+  <g class="board-region is-selected" data-board-region="cpu">
+    <rect class="board-region-halo" x="122" y="78" width="109" height="108" rx="6"/>
+    <rect x="130" y="86" width="92" height="88" rx="3" fill="#f6f3e8" stroke="#4c5c53" stroke-width="2"/>
+    <rect x="141" y="97" width="70" height="66" fill="url(#cpuContacts)" stroke="#869085"/>
+    <path d="M127 95v76h100V92M227 92v-8" fill="none" stroke="#50635b" stroke-width="2"/>
+    <path d="M144 103l6-1-6-5Z" fill="#dd594a"/>
+    <rect x="148" y="114" width="58" height="32" rx="2" fill="#e9ece2"/><text x="177" y="134" class="board-label" text-anchor="middle">01 CPU</text>
+  </g>
+  <g class="board-region" data-board-region="dimm">
+    <rect class="board-region-halo" x="238" y="65" width="87" height="158" rx="5"/>
+    <g fill="#3b4e46" stroke="#687d71" stroke-width="1.2">
+      <rect x="245" y="76" width="12" height="136" rx="1"/><rect x="265" y="76" width="12" height="136" rx="1"/><rect x="285" y="76" width="12" height="136" rx="1"/><rect x="305" y="76" width="12" height="136" rx="1"/>
+    </g>
+    <g fill="url(#dimmContacts)"><rect x="248" y="81" width="6" height="125"/><rect x="268" y="81" width="6" height="125"/><rect x="288" y="81" width="6" height="125"/><rect x="308" y="81" width="6" height="125"/></g>
+    <path d="M244 145h14m6 0h14m6 0h14m6 0h14" stroke="#e2e6dc" stroke-width="4"/>
+    <g fill="#71877b"><path d="M243 70h16v8h-16Zm20 0h16v8h-16Zm20 0h16v8h-16Zm20 0h16v8h-16Z"/><path d="M243 211h16v8h-16Zm20 0h16v8h-16Zm20 0h16v8h-16Zm20 0h16v8h-16Z"/></g>
+    <text x="282" y="58" class="board-label" text-anchor="middle">02 DIMM ×4</text>
+  </g>
+  <g class="board-region" data-board-region="pcie">
+    <rect class="board-region-halo" x="84" y="224" width="176" height="31" rx="5"/>
+    <rect x="90" y="232" width="153" height="14" rx="1" fill="#40564b" stroke="#647b6d" stroke-width="1.3"/>
+    <rect x="94" y="236" width="142" height="6" fill="url(#slotContacts)"/>
+    <path d="M114 231v15" stroke="#dce4d8" stroke-width="4"/><path d="M243 232h10v15h-10" fill="#6e8878"/>
+    <text x="92" y="223" class="board-label">03 PCIe x16</text>
+  </g>
+  <g class="board-region" data-board-region="m2">
+    <rect class="board-region-halo" x="84" y="265" width="167" height="52" rx="5"/>
+    <path d="M109 278H235V306H109Z" fill="#cbd8ca" stroke="#6b8471" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <rect x="91" y="278" width="18" height="28" fill="#3b5146" stroke="#647d6c"/>
+    <path d="M105 281v8m0 5v9" stroke="#c7b982" stroke-width="3"/>
+    <g fill="#e6e9df" stroke="#7a887b"><circle cx="169" cy="292" r="3"/><circle cx="202" cy="292" r="3"/><circle cx="233" cy="292" r="3"/></g>
+    <text x="121" y="291" class="board-label">04 M.2</text><text x="121" y="302" font-family="Arial, sans-serif" font-size="7" fill="#5e7364">M KEY</text>
+  </g>
+  <g class="board-region" data-board-region="sata">
+    <rect class="board-region-halo" x="328" y="258" width="53" height="71" rx="5"/>
+    <g fill="#3c5046" stroke="#6b8171" stroke-width="1.2"><rect x="335" y="270" width="17" height="22"/><rect x="357" y="270" width="17" height="22"/><rect x="335" y="297" width="17" height="22"/><rect x="357" y="297" width="17" height="22"/></g>
+    <g fill="none" stroke="#cebc87" stroke-width="1.5"><path d="M340 275v10h6v-3M362 275v10h6v-3M340 302v10h6v-3M362 302v10h6v-3"/></g>
+    <text x="353" y="250" class="board-label" text-anchor="middle">05 SATA</text>
+  </g>
+  <g class="board-region" data-board-region="eps">
+    <rect class="board-region-halo" x="83" y="26" width="60" height="36" rx="4"/>
+    <rect x="90" y="33" width="46" height="22" rx="1" fill="#3d5047" stroke="#6b7e70"/>
+    <g fill="#dce2d5"><path d="M94 37h6v6h-6Zm10 0h6v6h-6Zm10 0h6v6h-6Zm10 0h6v6h-6ZM94 46h6v6h-6Zm10 0h6v6h-6Zm10 0h6v6h-6Zm10 0h6v6h-6Z"/></g>
+    <text x="149" y="48" class="board-label">06 EPS 8-pin</text>
+  </g>
+  <g class="board-region" data-board-region="atx">
+    <rect class="board-region-halo" x="330" y="71" width="42" height="149" rx="4"/>
+    <rect x="338" y="79" width="26" height="133" rx="1" fill="#3d5047" stroke="#6b7e70"/>
+    <g fill="#dce2d5"><path d="M343 84h6v6h-6Zm11 0h6v6h-6ZM343 95h6v6h-6Zm11 0h6v6h-6ZM343 106h6v6h-6Zm11 0h6v6h-6ZM343 117h6v6h-6Zm11 0h6v6h-6ZM343 128h6v6h-6Zm11 0h6v6h-6ZM343 139h6v6h-6Zm11 0h6v6h-6ZM343 150h6v6h-6Zm11 0h6v6h-6ZM343 161h6v6h-6Zm11 0h6v6h-6ZM343 172h6v6h-6Zm11 0h6v6h-6ZM343 183h6v6h-6Zm11 0h6v6h-6ZM343 194h6v6h-6Zm11 0h6v6h-6ZM343 205h6v4h-6Zm11 0h6v4h-6Z"/></g>
+    <text x="402" y="144" class="board-label" text-anchor="middle" transform="rotate(90 402 144)">07 ATX 24-pin · 2×12</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="7" fill="#748377" letter-spacing=".5"><text x="48" y="376">INTERFACE STUDY / NOT A WIRING DIAGRAM</text><path d="M338 373h47m-47-3v6m47-6v6" stroke="#849486"/></g>
+</svg>

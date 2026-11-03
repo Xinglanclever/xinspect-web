@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#eef3f9" name="theme-color"/>
+<meta content="XinSpect 曦覽：Windows 原生硬體檢視、監控與安全稽核工具。資料來源可追溯，讀不到時說明原因。" name="description"/>
+<meta content="XinSpect「另種可能」— 讓事實有來源" property="og:title"/>
+<meta content="認識 XinSpect Windows 桌面版功能、資料來源、文件與測試邊界。此網站不會掃描你的電腦。" property="og:description"/>
+<title>XinSpect「另種可能」— 讓事實有來源</title>
+<link href="./assets/xinspect-brand-blue.png" rel="icon" sizes="512x512" type="image/png"/><link href="./assets/xinspect-brand-blue.ico" rel="shortcut icon" type="image/x-icon"/><link href="./assets/xinspect-brand-blue.png" rel="apple-touch-icon" sizes="512x512"/>
+<link href="./styles.css?v=a4647de4ddd9" rel="stylesheet"/>
+<link href="./hardware.css?v=3ca58024608e" rel="stylesheet"/>
+<link href="./motion.css?v=2f216e50fb95" rel="stylesheet"/>
+<link href="./acrylic.css?v=6eee0851d0e3" rel="stylesheet"/>
+<link href="./ai.css?v=b99b6c31273d" rel="stylesheet"/>
+<script defer="" src="./app.js?v=749f7ee43b68"></script>
+<script defer="" src="./hardware.js?v=724debebc08c"></script>
+<script defer="" src="./motion.js?v=60820fa4d2f4"></script>
+<link href="./report.css?v=3ac5345a984e" rel="stylesheet"/>
+<link href="./sources.css?v=82492d390e14" rel="stylesheet"/><script defer="" src="./report-guard.js?v=d0dff8b06f53"></script><script defer="" src="./report.js?v=d7e4bca4e3f2"></script><script defer="" src="./report-cloud.js?v=a94cf97f7e39"></script>
+<script defer="" src="./sources.js?v=9d42e8600a5b"></script></head>
+<body>
+<a class="skip-link" data-i18n="skip" href="#main">跳至主要內容</a>
+<div class="app-shell">
+<aside aria-label="網站導覽" class="sidebar" data-i18n-aria="siteNav" id="sidebar">
+<a aria-label="XinSpect 產品總覽" class="brand-lockup" data-i18n-aria="brandAria" href="#overview">
+<img alt="" aria-hidden="true" class="brand-mark" src="./assets/xinspect-brand-blue.png"/>
+<span class="brand-name"><strong>XinSpect</strong><span data-i18n="brandPhrase">「另種可能」</span><small data-i18n="brandEdition">Windows 桌面版</small></span>
+<span class="version-badge">3.13</span>
+</a>
+<div class="workspace-label" data-i18n="productNav">產品導覽</div>
+<nav aria-label="產品區段" class="primary-nav" data-i18n-aria="sectionNav">
+<a class="nav-link is-active" data-nav-link="" href="#overview"><span class="nav-icon">◫</span><span data-i18n="navOverview">產品總覽</span><span class="nav-dot"></span></a>
+<a class="nav-link" data-nav-link="" href="#xinspect-ai"><span aria-hidden="true" class="nav-icon nav-icon-ai">Ai</span><span>XinSpect-Ai</span></a>
+<a class="nav-link" data-nav-link="" href="#catalog"><span class="nav-icon">▦</span><span data-i18n="navCatalog">事實目錄</span></a>
+<a class="nav-link" data-nav-link="" href="#modules"><span class="nav-icon">⌘</span><span data-i18n="navModules">功能與資料源</span></a>
+<a class="nav-link" data-nav-link="" href="#reconcile"><span class="nav-icon">⇄</span><span data-i18n="navReconcile">三源對帳</span></a>
+<a class="nav-link" data-nav-link="" href="#evidence"><span class="nav-icon">◈</span><span data-i18n="navEvidence">證據與快照</span></a>
+<a class="nav-link" data-nav-link="" href="#docs"><span class="nav-icon">▤</span><span data-i18n="navDocs">文件與開源資料</span></a>
+<a class="nav-link" data-nav-link="" href="#history"><span class="nav-icon">↻</span><span data-i18n="navHistory">版本沿革</span></a>
+<a class="nav-link" data-nav-link="" href="#privacy"><span class="nav-icon">⛨</span><span data-i18n="navPrivacy">隱私與邊界</span></a>
+<a class="nav-link" data-nav-link="" href="#download"><span class="nav-icon">↧</span><span data-i18n="navDownload">下載與需求</span></a>
+<a class="nav-link" data-nav-link="" href="#report"><span aria-hidden="true" class="nav-icon">!</span><span data-report-i18n="navReport">問題回報</span></a><a class="nav-link" data-nav-link="" href="#support"><span aria-hidden="true" class="nav-icon">+</span><span data-report-i18n="navSupport">支援我們</span></a></nav>
+<div class="sidebar-rule"></div>
+<div class="sidebar-note"><span class="note-mark">i</span><p data-i18n="sidebarNote">這是產品介紹網站，<strong>不會讀取這台裝置的硬體數值</strong>。</p></div>
+<div class="sidebar-spacer"></div>
+<div class="sidebar-bottom">
+<div class="source-stamp"><span class="stamp-dot"></span><span data-i18n="sourceStamp">依據官方發布與原始碼</span></div>
+<a class="sidebar-github" href="https://github.com/Xinglanclever/XinSpect" rel="noopener noreferrer" target="_blank"><span data-i18n="openGithub">開啟 GitHub 專案</span> <span>↗</span></a>
+</div>
+</aside>
+<div class="main-column">
+<header class="topbar">
+<button aria-controls="sidebar" aria-expanded="false" aria-label="開啟導覽" class="mobile-menu icon-button" data-i18n-aria="openNav" id="mobileMenu" type="button">☰</button>
+<label class="language-label" data-i18n="languageLabel" for="languageSwitcher">語言</label>
+<select aria-label="切換語言" class="language-select" data-i18n-aria="languageLabel" id="languageSwitcher">
+<option value="zh-Hant">繁體中文</option>
+<option value="zh-Hans">简体中文</option>
+<option value="en">English</option>
+</select>
+<div class="breadcrumbs"><span>XinSpect「另種可能」</span><span class="crumb-slash">/</span><strong data-i18n="breadcrumb">產品說明</strong></div>
+<div class="topbar-actions">
+<span class="release-chip"><i></i> Windows x64 · v3.13</span>
+<button aria-label="切換深色主題" aria-pressed="false" class="icon-button theme-toggle" data-i18n-aria="themeToggle" data-i18n-title="themeToggle" id="themeToggle" title="切換明暗主題" type="button"><span aria-hidden="true" id="themeIcon">☾</span></button>
+<a class="top-github" href="https://github.com/Xinglanclever/XinSpect" rel="noopener noreferrer" target="_blank">GitHub <span>↗</span></a>
+</div>
+</header>
+<main class="content-area" id="main">
+<section aria-labelledby="heroTitle" class="hero-section" id="overview">
+<div class="hero-card">
+<div class="hero-content">
+<div class="eyebrow"><span class="live-pip"></span> 曦覽 XINSPECT <span class="eyebrow-sep">·</span> <span data-i18n="eyebrow">WINDOWS 原生工具</span></div>
+<h1 id="heroTitle"><span data-i18n="heroTitleA">硬體、韌體、Windows</span><br/><em data-i18n="heroTitleB">三種說法，一起核對。</em></h1>
+<p data-i18n="heroIntro">XinSpect 是 Windows 上的硬體檢視、監控與安全稽核工具。它把讀值、資料來源與可用狀態放在一起，讓你知道每個數字由誰提供，也看見哪些仍無法確認。</p>
+<div class="hero-actions">
+<a class="button button-light" href="https://github.com/Xinglanclever/XinSpect/releases/download/v3.13/XinSpect.exe" rel="noopener noreferrer" target="_blank"><span data-i18n="latestRelease">下載 XinSpect v3.13</span> <span>↗</span></a>
+<a class="hero-text-link" href="#docs"><span data-i18n="browseSource">閱讀功能文件</span> <span>↗</span></a>
+</div>
+<a aria-label="XinSpect-Ai 測試版：文件解釋、引用與有限的配置分析" class="hero-ai-entry" data-i18n-aria="aiHomeLabel" href="#xinspect-ai"><span class="hero-ai-label"><strong>XinSpect-Ai</strong><span aria-hidden="true">→</span></span><small><span data-i18n="aiModelType">測試版模型</span><span aria-hidden="true">｜</span><span data-i18n="aiTrainingStatus">功能有限，持續驗證中</span></small></a>
+<div class="hero-meta"><span data-i18n="heroMeta1">免費開源</span><b></b><span>Windows 10 / 11 · x64</span><b></b><span data-i18n="heroMeta3">預設唯讀</span></div>
+<div class="hero-principle"><span data-i18n="corePrinciple">核心原則</span><strong data-i18n="heroSideTitle">讀不到，不等於正常。</strong></div>
+</div>
+<figure aria-labelledby="hardwareStudyTitle" class="hardware-study">
+<div class="hardware-study-header"><strong data-board-copy="title" id="hardwareStudyTitle">主機板接口通用示意</strong><span data-board-copy="type">非特定型號</span></div>
+<svg aria-labelledby="boardMapTitle boardMapDesc" class="board-map" role="img" viewbox="0 0 440 390" xmlns="http://www.w3.org/2000/svg">
+<title id="boardMapTitle">主機板接口通用示意</title>
+<desc id="boardMapDesc">俯視示意：CPU 插座在上半部，四條 DIMM 在右側，PCIe 在下半部，M.2 與 SATA 分開，頂部為 2×4 的 EPS 供電，右緣為 2×12 的 ATX 主供電。不是特定型號或接線圖。</desc>
+<defs>
+<pattern height="20" id="boardGrid" patternunits="userSpaceOnUse" width="20"><path d="M20 0H0V20" fill="none" stroke="#d5d9de" stroke-width=".5"></path></pattern>
+<pattern height="5" id="cpuContacts" patternunits="userSpaceOnUse" width="5"><circle cx="2.5" cy="2.5" fill="#8b96a6" r=".75"></circle></pattern>
+<pattern height="6" id="slotContacts" patternunits="userSpaceOnUse" width="5"><path d="M2 0v6" stroke="#7e9bc6" stroke-width="1.5"></path></pattern>
+<pattern height="5" id="dimmContacts" patternunits="userSpaceOnUse" width="6"><path d="M0 2h6" stroke="#a4acb8" stroke-width="1"></path></pattern>
+</defs>
+<rect fill="url(#boardGrid)" height="390" width="440" x="0" y="0"></rect>
+<path d="M47 24H385V356H47Z" fill="#dce0e6" stroke="#4b5360" stroke-width="2"></path>
+<g fill="#eaeef3" stroke="#6e7887" stroke-width="1.3"><circle cx="60" cy="37" r="4"></circle><circle cx="372" cy="37" r="4"></circle><circle cx="60" cy="343" r="4"></circle><circle cx="372" cy="343" r="4"></circle><circle cx="372" cy="225" r="4"></circle></g>
+<g class="board-neutral" fill="#7e8896" stroke="#4b5360" stroke-width="1.4">
+<rect height="127" rx="2" width="42" x="37" y="69"></rect><path d="M43 87h30M43 111h30M43 144h30M43 178h30" fill="none"></path>
+<rect height="105" rx="2" width="14" x="105" y="73"></rect><rect height="14" rx="2" width="100" x="128" y="56"></rect>
+<rect height="49" rx="3" width="52" x="263" y="261"></rect>
+</g>
+<g fill="#59616d" font-family="Helvetica, Arial, sans-serif" font-size="8" letter-spacing="1"><text transform="rotate(-90 23 140)" x="23" y="140">REAR I/O</text><text fill="#e9eef5" text-anchor="middle" x="289" y="290">PCH</text><text x="115" y="339">GENERIC BOARD · TOP VIEW</text></g>
+<g class="board-region is-selected" data-board-region="cpu">
+<rect class="board-region-halo" height="108" rx="6" width="109" x="122" y="78"></rect>
+<rect fill="#e8eef6" height="88" rx="3" stroke="#4c525c" stroke-width="2" width="92" x="130" y="86"></rect>
+<rect fill="url(#cpuContacts)" height="66" stroke="#7f8896" width="70" x="141" y="97"></rect>
+<path d="M127 95v76h100V92M227 92v-8" fill="none" stroke="#505863" stroke-width="2"></path>
+<path d="M144 103l6-1-6-5Z" fill="#4f86d8"></path>
+<rect fill="#e2e6ec" height="32" rx="2" width="58" x="148" y="114"></rect><text class="board-label" text-anchor="middle" x="177" y="134">01 CPU</text>
+</g>
+<g class="board-region" data-board-region="dimm">
+<rect class="board-region-halo" height="158" rx="5" width="87" x="238" y="65"></rect>
+<g fill="#3b434e" stroke="#67707e" stroke-width="1.2">
+<rect height="136" rx="1" width="12" x="245" y="76"></rect><rect height="136" rx="1" width="12" x="265" y="76"></rect><rect height="136" rx="1" width="12" x="285" y="76"></rect><rect height="136" rx="1" width="12" x="305" y="76"></rect>
+</g>
+<g fill="url(#dimmContacts)"><rect height="125" width="6" x="248" y="81"></rect><rect height="125" width="6" x="268" y="81"></rect><rect height="125" width="6" x="288" y="81"></rect><rect height="125" width="6" x="308" y="81"></rect></g>
+<path d="M244 145h14m6 0h14m6 0h14m6 0h14" stroke="#dce0e6" stroke-width="4"></path>
+<g fill="#707a88"><path d="M243 70h16v8h-16Zm20 0h16v8h-16Zm20 0h16v8h-16Zm20 0h16v8h-16Z"></path><path d="M243 211h16v8h-16Zm20 0h16v8h-16Zm20 0h16v8h-16Zm20 0h16v8h-16Z"></path></g>
+<text class="board-label" text-anchor="middle" x="282" y="58">02 DIMM ×4</text>
+</g>
+<g class="board-region" data-board-region="pcie">
+<rect class="board-region-halo" height="31" rx="5" width="176" x="84" y="224"></rect>
+<rect fill="#404956" height="14" rx="1" stroke="#646d7b" stroke-width="1.3" width="153" x="90" y="232"></rect>
+<rect fill="url(#slotContacts)" height="6" width="142" x="94" y="236"></rect>
+<path d="M114 231v15" stroke="#d8dde4" stroke-width="4"></path><path d="M243 232h10v15h-10" fill="#6e7888"></path>
+<text class="board-label" x="92" y="223">03 PCIe x16</text>
+</g>
+<g class="board-region" data-board-region="m2">
+<rect class="board-region-halo" height="52" rx="5" width="167" x="84" y="265"></rect>
+<path d="M109 278H235V306H109Z" fill="#cad0d8" stroke="#6b7584" stroke-dasharray="3 3" stroke-width="1.2"></path>
+<rect fill="#3b4451" height="28" stroke="#646e7d" width="18" x="91" y="278"></rect>
+<path d="M105 281v8m0 5v9" stroke="#829ec7" stroke-width="3"></path>
+<g fill="#dfe3e9" stroke="#747e8e"><circle cx="169" cy="292" r="3"></circle><circle cx="202" cy="292" r="3"></circle><circle cx="233" cy="292" r="3"></circle></g>
+<text class="board-label" x="121" y="291">04 M.2</text><text fill="#5e6673" font-family="Helvetica, Arial, sans-serif" font-size="7" x="121" y="302">M KEY</text>
+</g>
+<g class="board-region" data-board-region="sata">
+<rect class="board-region-halo" height="71" rx="5" width="53" x="328" y="258"></rect>
+<g fill="#3c4450" stroke="#6a7482" stroke-width="1.2"><rect height="22" width="17" x="335" y="270"></rect><rect height="22" width="17" x="357" y="270"></rect><rect height="22" width="17" x="335" y="297"></rect><rect height="22" width="17" x="357" y="297"></rect></g>
+<g fill="none" stroke="#87a3ce" stroke-width="1.5"><path d="M340 275v10h6v-3M362 275v10h6v-3M340 302v10h6v-3M362 302v10h6v-3"></path></g>
+<text class="board-label" text-anchor="middle" x="353" y="250">05 SATA</text>
+</g>
+<g class="board-region" data-board-region="eps">
+<rect class="board-region-halo" height="36" rx="4" width="60" x="83" y="26"></rect>
+<rect fill="#3d4550" height="22" rx="1" stroke="#697280" width="46" x="90" y="33"></rect>
+<g fill="#d5dae2"><path d="M94 37h6v6h-6Zm10 0h6v6h-6Zm10 0h6v6h-6Zm10 0h6v6h-6ZM94 46h6v6h-6Zm10 0h6v6h-6Zm10 0h6v6h-6Zm10 0h6v6h-6Z"></path></g>
+<text class="board-label" x="149" y="48">06 EPS 8-pin</text>
+</g>
+<g class="board-region" data-board-region="atx">
+<rect class="board-region-halo" height="149" rx="4" width="42" x="330" y="71"></rect>
+<rect fill="#3d4550" height="133" rx="1" stroke="#697280" width="26" x="338" y="79"></rect>
+<g fill="#d5dae2"><path d="M343 84h6v6h-6Zm11 0h6v6h-6ZM343 95h6v6h-6Zm11 0h6v6h-6ZM343 106h6v6h-6Zm11 0h6v6h-6ZM343 117h6v6h-6Zm11 0h6v6h-6ZM343 128h6v6h-6Zm11 0h6v6h-6ZM343 139h6v6h-6Zm11 0h6v6h-6ZM343 150h6v6h-6Zm11 0h6v6h-6ZM343 161h6v6h-6Zm11 0h6v6h-6ZM343 172h6v6h-6Zm11 0h6v6h-6ZM343 183h6v6h-6Zm11 0h6v6h-6ZM343 194h6v6h-6Zm11 0h6v6h-6ZM343 205h6v4h-6Zm11 0h6v4h-6Z"></path></g>
+<text class="board-label" text-anchor="middle" transform="rotate(90 402 144)" x="402" y="144">07 ATX 24-pin · 2×12</text>
+</g>
+<g fill="#6f7988" font-family="Helvetica, Arial, sans-serif" font-size="7" letter-spacing=".5"><text x="48" y="376">INTERFACE STUDY / NOT A WIRING DIAGRAM</text><path d="M338 373h47m-47-3v6m47-6v6" stroke="#818a98"></path></g>
+</svg>
+<div aria-label="主機板元件" class="board-controls" role="group"><span class="visually-hidden" data-board-copy="hint">選擇元件，核對接口</span><button aria-controls="boardDetail" aria-pressed="true" class="board-control" data-board-control="cpu" type="button">01 CPU</button><button aria-controls="boardDetail" aria-pressed="false" class="board-control" data-board-control="dimm" type="button">02 DIMM</button><button aria-controls="boardDetail" aria-pressed="false" class="board-control" data-board-control="pcie" type="button">03 PCIe</button><button aria-controls="boardDetail" aria-pressed="false" class="board-control" data-board-control="m2" type="button">04 M.2</button><button aria-controls="boardDetail" aria-pressed="false" class="board-control" data-board-control="sata" type="button">05 SATA</button><button aria-controls="boardDetail" aria-pressed="false" class="board-control" data-board-control="eps" type="button">06 EPS</button><button aria-controls="boardDetail" aria-pressed="false" class="board-control" data-board-control="atx" type="button">07 ATX</button></div>
+<div aria-atomic="true" aria-live="polite" class="board-detail" id="boardDetail"><h2 class="board-detail-title" id="boardDetailTitle">01 / CPU 插座</h2><p id="boardDetailText">處理器置於專用插座。</p><a href="#module-cpu" id="boardDetailLink">查看對應功能 →</a></div>
+<figcaption><span data-board-copy="caption">俯視通用布局；位置依型號而異，不作接線參考。</span> <a class="board-reference" data-board-copy="reference" href="https://download.gigabyte.com/FileList/Manual/mb_manual_z490m_e.pdf#page=5" rel="noopener noreferrer" target="_blank">接口參考：官方主板手冊</a></figcaption>
+</figure>
+</div>
+<div class="truth-banner" role="note"><span class="truth-icon">i</span><p><strong data-i18n="truthLead">這裡沒有即時硬體讀值或測試按鈕。</strong> <span data-i18n="truthBody">這是依官方發布、對應原始碼與可追溯文件整理的桌面軟體介紹；本網站不會掃描你的電腦。</span></p><a href="#docs"><span data-i18n="readDocs">查看文件</span> <span>↗</span></a></div>
+</section>
+<section aria-labelledby="aiTitle" class="section-block ai-section" id="xinspect-ai">
+<div class="ai-status-card">
+<div class="ai-status-copy"><div class="section-kicker">XINSPECT-AI · MODEL STATUS</div><h2 id="aiTitle">XinSpect-Ai</h2><p class="ai-status-line"><span data-i18n="aiModelType">測試版模型</span><span aria-hidden="true">｜</span><strong data-i18n="aiTrainingStatus">功能有限，持續驗證中</strong></p><p class="ai-status-intro" data-i18n="aiIntro">目前定位為解釋 XinSpect 相關文件、依檢索資料提供引用，以及少量配置分析；仍在測試，能力與結果有明確限制。</p><p class="ai-status-note" data-i18n="aiInfoOnly">此頁僅介紹專案，無網站內 AI 對話。功能依檢索資料與部署設定而定；缺少來源片段時可能答錯或編造出處，重要內容請回查原始資料。</p><a class="text-link ai-repo-link" data-i18n="aiRepoLink" href="https://github.com/Xinglanclever/XinSpect-AI-test" rel="noopener noreferrer" target="_blank">查看 XinSpect-Ai 測試版與測試報告 ↗</a></div>
+<div aria-hidden="true" class="ai-state-mark">Ai</div>
+</div>
+</section>
+<section aria-labelledby="releaseUpdateTitle" class="section-block release-updates" id="release-updates">
+<div class="section-heading"><div><div class="section-kicker" data-i18n="releaseUpdateKicker">OFFICIAL MAINLINE · v3.13 · 2026-11-01</div><h2 data-i18n="releaseUpdateTitle" id="releaseUpdateTitle">近期版本，改了哪些實際使用細節？</h2><p data-i18n="releaseUpdateIntro">以下摘要 v3.06–v3.13 正式主線中對使用者有影響的變更；實驗版另行標示，不混入正式版功能。</p></div><a class="section-source" href="https://github.com/Xinglanclever/XinSpect/releases/tag/v3.13" rel="noopener noreferrer" target="_blank"><span data-i18n="releaseSourceLatest">v3.13 正式版發布說明</span> ↗</a></div>
+<div class="feature-grid release-highlight-grid">
+<article class="feature-card feature-storage"><div class="feature-top"><span class="feature-icon">⌗</span><span class="feature-category">v3.13 · DESIGN ESTIMATES</span><span class="feature-no">01</span></div><h3 data-i18n="releaseHistoryTitle">監控規劃：十項工程設計試算</h3><p data-i18n="releaseHistoryBody">v3.13 新增十項監控設計計算，數值由宣告輸入推導，不讀本機硬體；輸入不足時不補假數字。規劃 JSON 留在本機，只有儲存後才進入事實集與匯出報告，仍須實地驗收。</p><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/releases/tag/v3.13" rel="noopener noreferrer" target="_blank"><span data-i18n="releaseSourceLatest">v3.13 正式版發布說明</span> ↗</a></article>
+<article class="feature-card feature-cpu"><div class="feature-top"><span class="feature-icon">⛨</span><span class="feature-category">v3.13 · SECURITY BASELINE</span><span class="feature-no">02</span></div><h3 data-i18n="releaseTelemetryTitle">藍色中隊預設關閉，並補上 Win11 基線</h3><p data-i18n="releaseTelemetryBody">新安裝預設不啟用常駐守護進程；唯讀態勢評估仍可用。新增多項 Windows 安全檢查，讀不到的資訊標示「未評估」，不當作通過。</p><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/releases/tag/v3.13" rel="noopener noreferrer" target="_blank"><span data-i18n="releaseSourceTelemetry">v3.13 安全與基線發布說明</span> ↗</a></article>
+<article class="feature-card feature-gpu"><div class="feature-top"><span class="feature-icon">◷</span><span class="feature-category">v3.13 · RESPONSIVENESS</span><span class="feature-no">03</span></div><h3 data-i18n="releaseDeliveryTitle">M.2／U.2 分析不再卡住主視窗</h3><p data-i18n="releaseDeliveryBody">分析改在背景收集並回 UI 執行緒套用；磁碟 WMI 查詢設 3 秒上限。逾時與讀取失敗會分開說明，不再留白冒充「沒有磁碟」。</p><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/releases/tag/v3.13" rel="noopener noreferrer" target="_blank"><span data-i18n="releaseSourceLatest">v3.13 正式版發布說明</span> ↗</a></article>
+</div>
+<p class="data-caption"><span data-i18n="releaseExperimentalNote">v3.11 Swiss／Helvetica 介面是 experiment/swiss-helvetica 分支的預發布實驗，不是 v3.13 正式版能力。此網站已改用 Helvetica 優先、搭配 Arial 與繁中文字體的系統 fallback。</span><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/releases/tag/v3.11" rel="noopener noreferrer" target="_blank"><span data-i18n="releaseSourceExperimental">檢視 v3.11 實驗版來源</span> ↗</a></p>
+</section>
+<section aria-labelledby="catalogTitle" class="section-block" id="catalog">
+<div class="section-heading"><div><div class="section-kicker">FACT CATALOG · v3.13</div><h2 data-i18n="catalogTitle" id="catalogTitle">先看清楚：這些是目錄數，不是虛構讀值</h2><p data-i18n="catalogIntro">以下規模依官方 v3.13 README 與目錄來源統計；可由連結回查。</p></div><a class="section-source" href="https://github.com/Xinglanclever/XinSpect/blob/v3.13/Services/FactKeyCatalog.cs" rel="noopener noreferrer" target="_blank"><span data-i18n="readmeEvidence">v3.13 官方文件依據</span> <span>↗</span></a></div>
+<div class="metric-grid">
+<article class="metric-card"><span class="metric-index">01 / FACT KEYS</span><a class="metric-value-link" href="https://github.com/Xinglanclever/XinSpect/blob/v3.13/Services/FactKeyCatalog.cs" rel="noopener noreferrer" target="_blank">1,167</a><span data-i18n="metricKeys">編譯期事實鍵</span><p data-i18n="metricKeysDesc">編譯期目錄中的資料項識別鍵；不是掃描結果，也不代表每台電腦都能讀到全部項目。</p></article>
+<article class="metric-card"><span class="metric-index">02 / DOMAINS</span><a class="metric-value-link" href="https://github.com/Xinglanclever/XinSpect/blob/v3.13/Tools/gen-readme-domains.py" rel="noopener noreferrer" target="_blank">155</a><span data-i18n="metricDomains">事實域</span><p data-i18n="metricDomainsDesc">涵蓋硬體、韌體、作業系統、裝置與證據等不同資料範圍。</p></article>
+<article class="metric-card"><span class="metric-index">03 / DYNAMIC</span><a class="metric-value-link" href="https://github.com/Xinglanclever/XinSpect/blob/v3.13/Services/FactKeyDynamicCatalog.cs" rel="noopener noreferrer" target="_blank">68</a><span data-i18n="metricDynamic">動態鍵家族</span><p data-i18n="metricDynamicDesc">用於表示可依裝置或讀取情境展開的事實項目家族。</p></article>
+</div>
+
+<p class="data-caption"><span data-i18n="catalogFoot">只描述 v3.13 程式碼目錄，不是掃描結果、準確率、完成度或支援保證。</span><a href="https://github.com/Xinglanclever/XinSpect/blob/v3.13/Tools/gen-readme-domains.py" rel="noopener noreferrer" target="_blank"><span data-i18n="countMethod">查看領域計數程式</span> ↗</a></p>
+</section>
+<section aria-labelledby="modulesTitle" class="section-block section-modules" id="modules">
+<div class="section-heading"><div><div class="section-kicker">WHAT THE WINDOWS APP READS</div><h2 data-i18n="modulesTitle" id="modulesTitle">功能介紹：每一類資料，都交代來源</h2><p data-i18n="modulesIntro">以下說明桌面程式具備的資料路徑。實際可讀項目會受硬體、韌體、驅動、權限與作業系統版本影響。</p></div><span class="section-meta" data-i18n="modulesMeta">功能依 v3.13 原始碼</span></div>
+<div class="feature-grid">
+<article class="feature-card feature-cpu" id="module-cpu"><div class="feature-top"><span class="feature-icon">⌘</span><span class="feature-category">PROCESSOR</span><span class="feature-no">01</span></div><h3 data-i18n="cpuTitle">處理器與即時狀態</h3><p data-i18n="cpuDesc">把規格與當下狀態分開看：CPUID 提供識別與能力；感測器提供即時封裝與核心讀值，另有以 NtQuerySystemInformation 差分計算的逐邏輯處理器使用率與走勢；MSR 路徑則提供獨立的頻率、功耗與熱狀態讀取。</p><div class="source-tags"><a class="source-tag-link" data-source-en="CPUID / processor identity and capabilities" data-source-hans="CPUID／处理器识别与能力" data-source-hant="CPUID／處理器識別與能力" data-source-key="cpu-cpuid" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/CpuIdService.cs" rel="noopener noreferrer" target="_blank">CPUID</a><a class="source-tag-link" data-source-en="MSR / frequency, package temperature and power" data-source-hans="MSR／频率、封装温度与功耗实现" data-source-hant="MSR／頻率、封裝溫度與功耗實作" data-source-key="cpu-msr" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/CeilingService.cs" rel="noopener noreferrer" target="_blank">MSR</a><a class="source-tag-link" data-source-en="Sensors / core and package readings" data-source-hans="传感器／核心与封装读值绑定" data-source-hant="感測器／核心與封裝讀值繫結" data-source-key="cpu-sensor" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/SensorService.cs" rel="noopener noreferrer" target="_blank">感測器</a><a class="source-tag-link" data-source-en="WMI / static processor specifications" data-source-hans="WMI／静态处理器规格" data-source-hant="WMI／靜態處理器規格" data-source-key="cpu-wmi" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/SystemInfoService.cs" rel="noopener noreferrer" target="_blank">WMI</a></div><div class="feature-caveat"><b data-i18n="caveat">判讀邊界</b><span data-i18n="cpuCaveat">即時走勢以秒級取樣，捕捉不到更短的尖峰；VBS／HVCI 也可能影響部分 MSR 讀值。</span></div><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/Views/CpuView.xaml" rel="noopener noreferrer" target="_blank"><span>Feature implementation / official source</span> <span>↗</span></a></article>
+<article class="feature-card feature-memory" id="module-memory"><div class="feature-top"><span class="feature-icon">▤</span><span class="feature-category">MEMORY</span><span class="feature-no">02</span></div><h3 data-i18n="memoryTitle">記憶體模組與實際配置</h3><p data-i18n="memoryDesc">對照 SPD／SMBus 直讀、SMBIOS／WMI 回報與目前生效狀態：模組／插槽資訊、JEDEC 與 XMP／EXPO 設定檔、實際時序和使用量分別保留其來源。</p><div class="source-tags"><a class="source-tag-link" data-source-en="Source tag: SPD/SMBus" data-source-hans="来源标签：SPD／SMBus" data-source-hant="來源標籤：SPD／SMBus" data-source-key="memory-spd" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/SpdSurveyor.cs" rel="noopener noreferrer" target="_blank">SPD / SMBus</a><a class="source-tag-link" data-source-en="Source tag: SMBIOS Type 17" data-source-hans="来源标签：SMBIOS Type 17" data-source-hant="來源標籤：SMBIOS Type 17" data-source-key="memory-smbios" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/SmbiosFacts.cs" rel="noopener noreferrer" target="_blank">SMBIOS</a><a class="source-tag-link" data-source-en="Source tag: Windows WMI" data-source-hans="来源标签：Windows WMI" data-source-hant="來源標籤：Windows WMI" data-source-key="windows-wmi" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/MemWmiCrossFactsService.cs" rel="noopener noreferrer" target="_blank">Windows</a></div><div class="feature-caveat"><b data-i18n="caveat">判讀邊界</b><span data-i18n="memoryCaveat">額定速度不等於目前生效速度；未填欄位留空，不猜通道數或補上推測值。</span></div><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/ViewModels/StartupSequence.cs" rel="noopener noreferrer" target="_blank"><span>Feature implementation / official source</span> <span>↗</span></a></article>
+<article class="feature-card feature-storage" id="module-storage"><div class="feature-top"><span class="feature-icon">▱</span><span class="feature-category">STORAGE</span><span class="feature-no">03</span></div><h3 data-i18n="storageTitle">儲存裝置健康與計數器</h3><p data-i18n="storageDesc">呈現 ATA SMART 與 NVMe 裝置回報的健康、磨耗、錯誤與累計計數器，並把控制器／裝置路徑分開，避免把韌體估算值寫成獨立量測。</p><div class="source-tags"><a class="source-tag-link" data-source-en="ATA SMART implementation" data-source-hans="ATA SMART 实现" data-source-hant="ATA SMART 實作" data-source-key="storage-smart" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/StorageSmartService.cs" rel="noopener noreferrer" target="_blank">ATA SMART</a><a class="source-tag-link" data-source-en="General source: NVMe Health Log" data-source-hans="一般来源：NVMe Health Log" data-source-hant="一般來源：NVMe Health Log" data-source-key="storage-nvme" href="https://learn.microsoft.com/en-us/windows/win32/api/nvme/ns-nvme-nvme_health_info_log" rel="noopener noreferrer" target="_blank">NVMe Health Log</a><a class="source-tag-link" data-source-en="Windows / storage reliability counters" data-source-hans="Windows／存储可靠性计数器" data-source-hant="Windows／儲存可靠性計數器" data-source-key="storage-windows" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/StorageReliabilityFactsService.cs" rel="noopener noreferrer" target="_blank">Windows</a></div><div class="feature-caveat"><b data-i18n="caveat">判讀邊界</b><span data-i18n="storageCaveat">健康與磨耗常是裝置韌體自報；讀不到、裝置不支援與讀取失敗不是同一種狀態。</span></div><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/StorageSmartService.cs" rel="noopener noreferrer" target="_blank"><span>Feature implementation / official source</span> <span>↗</span></a></article>
+<article class="feature-card feature-gpu" id="module-gpu"><div class="feature-top"><span class="feature-icon">▣</span><span class="feature-category">GPU &amp; PCIe</span><span class="feature-no">04</span></div><h3 data-i18n="gpuTitle">顯示卡與 PCIe 鏈路</h3><p data-i18n="gpuDesc">整合裝置識別、驅動回報與 PCIe 資訊；NVIDIA 裝置可使用 NVML 顯示溫度、功耗、時脈、風扇與 ECC 等欄位；多顯示卡可列出轉接器數量，並標示是否混合廠商。</p><div class="source-tags"><a class="source-tag-link" data-source-en="NVML / GPU telemetry implementation" data-source-hans="NVML／GPU 遥测实现" data-source-hant="NVML／GPU 遙測實作" data-source-key="gpu-nvml" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/Gpu/NvmlInterop.cs" rel="noopener noreferrer" target="_blank">NVML</a><a class="source-tag-link" data-source-en="General source: Win32_VideoController" data-source-hans="一般来源：Win32_VideoController" data-source-hant="一般來源：Win32_VideoController" data-source-key="gpu-wmi" href="https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-videocontroller" rel="noopener noreferrer" target="_blank">WMI / driver</a><a class="source-tag-link" data-source-en="PCIe link reading implementation" data-source-hans="PCIe 链路读取实现" data-source-hant="PCIe 鏈路讀取實作" data-source-key="gpu-pci" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/PcieLinkService.cs" rel="noopener noreferrer" target="_blank">PCI config</a></div><div class="feature-caveat"><b data-i18n="caveat">判讀邊界</b><span data-i18n="gpuCaveat">NVML 不適用於所有顯示卡；來源未提供時顯示不可用，不以 0 代替。</span></div><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/GpuAnalysisService.cs" rel="noopener noreferrer" target="_blank"><span>Feature implementation / official source</span> <span>↗</span></a></article>
+<article class="feature-card feature-board" id="module-board"><div class="feature-top"><span class="feature-icon">⌬</span><span class="feature-category">BOARD &amp; FIRMWARE</span><span class="feature-no">05</span></div><h3 data-i18n="boardTitle">主機板、韌體與安全狀態</h3><p data-i18n="boardDesc">集中呈現 SMBIOS、ACPI、UEFI 變數、BIOS／微碼、PCI 資源與部分晶片組安全旗標；韌體安全頁把讀取通路與判讀依據一起列出。</p><div class="source-tags"><a class="source-tag-link" data-source-en="SMBIOS / motherboard and firmware tables" data-source-hans="SMBIOS／主板与固件表" data-source-hant="SMBIOS／主機板與韌體表" data-source-key="board-smbios" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/SmbiosService.cs" rel="noopener noreferrer" target="_blank">SMBIOS</a><a class="source-tag-link" data-source-en="ACPI / table reading implementation" data-source-hans="ACPI／表格读取实现" data-source-hant="ACPI／表格讀取實作" data-source-key="board-acpi" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/AcpiTableService.cs" rel="noopener noreferrer" target="_blank">ACPI</a><a class="source-tag-link" data-source-en="UEFI / variable access implementation" data-source-hans="UEFI／变量读取实现" data-source-hant="UEFI／變數讀取實作" data-source-key="board-uefi" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/FirmwareVariableAccess.cs" rel="noopener noreferrer" target="_blank">UEFI</a><a class="source-tag-link" data-source-en="PCI resource audit" data-source-hans="PCI 资源审计" data-source-hant="PCI 資源稽核" data-source-key="board-pci" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/PciResourceAuditService.cs" rel="noopener noreferrer" target="_blank">PCI</a></div><div class="feature-caveat"><b data-i18n="caveat">判讀邊界</b><span data-i18n="boardCaveat">部分低階項目需要系統管理員權限及就緒的唯讀驅動；XinSpect 不替你刷寫 BIOS。</span></div><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/ViewModels/MainViewModel.cs" rel="noopener noreferrer" target="_blank"><span>Feature implementation / official source</span> <span>↗</span></a></article>
+<article class="feature-card feature-os" id="module-os"><div class="feature-top"><span class="feature-icon">▧</span><span class="feature-category">WINDOWS &amp; HISTORY</span><span class="feature-no">06</span></div><h3 data-i18n="osTitle">Windows 系統與歷史脈絡</h3><p data-i18n="osDesc">整合 Windows 系統回報與 WMI 效能計數器，摘要最近 7 天 System 事件記錄中的嚴重／錯誤事件；另提供近期感測走勢、歷史回放、裝置診斷與 HTML／Markdown／純文字報告匯出。</p><div class="source-tags"><a class="source-tag-link" data-source-en="WMI / CIM implementation" data-source-hans="WMI／CIM 实现" data-source-hant="WMI／CIM 實作" data-source-key="os-wmi" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/OsAnalysisService.cs" rel="noopener noreferrer" target="_blank">WMI / CIM</a><a class="source-tag-link" data-source-en="Performance counters implementation" data-source-hans="性能计数器实现" data-source-hant="效能計數器實作" data-source-key="os-perf" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/PerformanceObservationFactsService.cs" rel="noopener noreferrer" target="_blank">Performance Counters</a><a class="source-tag-link" data-source-en="Event log implementation" data-source-hans="事件记录实现" data-source-hant="事件記錄實作" data-source-key="os-event" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/EventLogSummaryService.cs" rel="noopener noreferrer" target="_blank">Event Log</a></div><div class="feature-caveat"><b data-i18n="caveat">判讀邊界</b><span data-i18n="osCaveat">事件與讀值同時出現不代表因果；Windows／驅動自報值會標為回報來源。</span></div><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/OsAnalysisService.cs" rel="noopener noreferrer" target="_blank"><span>Feature implementation / official source</span> <span>↗</span></a></article>
+</div>
+<div class="monitoring-strip"><div class="monitoring-mark">↗</div><div><span class="section-kicker">MONITORING, NOT A SCORE</span><strong data-i18n="monitoringLead">即時值與規格值分開；每秒取樣不冒充毫秒級量測。</strong><p data-i18n="monitoringDesc">總覽圖表保留近 90 秒走勢；歷史回放保留近一小時的秒級樣本，較早資料按分鐘保存最小／平均／最大值。</p></div><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/Models/LiveModels.cs" rel="noopener noreferrer" target="_blank"><span data-i18n="monitoringSource">查看讀值與時間界線</span> <span>↗</span></a></div>
+</section>
+<section aria-labelledby="reconcileTitle" class="section-block reconcile-section" id="reconcile">
+<div class="section-heading"><div><div class="section-kicker">SOURCE PATHS · EXPLICIT LIMITS</div><h2 data-i18n="reconcileTitle" id="reconcileTitle">不同來源，逐條對照</h2><p data-i18n="reconcileIntro">硬體、韌體與 Windows 不是互相替代的答案，而是各自帶著來源與限制的證詞。</p></div><span class="section-meta" data-i18n="noHealthScore">不產生單一健康分數</span></div>
+<div class="source-showcase"><div class="source-illustration"><img alt="硬體、韌體與作業系統三種資料來源的概念插畫" data-i18n-alt="sourcesAlt" src="./assets/swiss-three-sources.jpg"/><span>HARDWARE · FIRMWARE · WINDOWS</span></div><div class="source-list">
+<article class="source-item"><span class="source-number">01</span><div><strong data-i18n="sourceHardwareTitle">硬體自己說的</strong><p data-i18n="sourceHardwareDesc">CPUID、MSR、PCI、感測器，以及 SPD／SMBus、SMART／NVMe 等硬體或裝置讀取路徑。</p></div><span class="source-label source-hardware">DEVICE</span></article>
+<article class="source-item"><span class="source-number">02</span><div><strong data-i18n="sourceFirmwareTitle">韌體提供的</strong><p data-i18n="sourceFirmwareDesc">SMBIOS、ACPI、UEFI 變數與平台宣告；欄位空白時不自行補猜。</p></div><span class="source-label source-firmware">FIRMWARE</span></article>
+<article class="source-item"><span class="source-number">03</span><div><strong data-i18n="sourceWindowsTitle">Windows 回報的</strong><p data-i18n="sourceWindowsDesc">WMI／CIM、效能計數器、驅動與事件紀錄；回報值保留其來源性質。</p></div><span class="source-label source-windows">OPERATING SYSTEM</span></article>
+</div></div>
+<div class="reconcile-footnote"><span class="footnote-mark">i</span><span data-i18n="reconcileFoot">對帳只陳述「一致、矛盾或無法驗證」及其依據。缺少來源時不把空白當成通過，也不替使用者下硬體好壞結論。</span></div>
+<div class="status-trust-grid">
+<section aria-labelledby="statusTitle" class="status-panel"><div class="panel-label">AVAILABILITY · SIX STATES</div><h3 data-i18n="statusTitle" id="statusTitle">「沒有讀值」有不同原因</h3><div class="status-list">
+<div><b class="status-dot present"></b><strong>Present</strong><span data-i18n="statusPresent">已讀到，來源路徑確認</span></div><div><b class="status-dot unknown"></b><strong>Unknown</strong><span data-i18n="statusUnknown">有值但來源／判讀未確認</span></div><div><b class="status-dot not-applicable"></b><strong>NotApplicable</strong><span data-i18n="statusNA">本機情境不適用</span></div><div><b class="status-dot not-supported"></b><strong>NotSupported</strong><span data-i18n="statusUnsupported">硬體或平台不支援</span></div><div><b class="status-dot privilege"></b><strong>InsufficientPrivilege</strong><span data-i18n="statusPrivilege">權限或驅動不足</span></div><div><b class="status-dot read-error"></b><strong>ReadError</strong><span data-i18n="statusError">嘗試讀取但失敗</span></div>
+</div><p class="panel-note" data-i18n="statusFoot">不是 Present 的事實不以數字 0 填補；「零」只應代表真的量到零。</p></section>
+<section aria-labelledby="trustTitle" class="trust-panel"><div class="panel-label">FACT TRUST · SOURCE TYPE</div><h3 data-i18n="trustTitle" id="trustTitle">來源標籤不等於準確度保證</h3>
+<div class="trust-row"><span class="trust-code measured">M</span><div><strong>Measured · <span data-i18n="measured">直接量測</span></strong><p data-i18n="measuredDesc">程式直接讀取或量出，例如 MSR、感測器。</p></div></div>
+<div class="trust-row"><span class="trust-code reported">R</span><div><strong>Reported · <span data-i18n="reported">外部回報</span></strong><p data-i18n="reportedDesc">由 Windows、驅動或韌體宣告，未由程式獨立驗證。</p></div></div>
+<div class="trust-row"><span class="trust-code derived">D</span><div><strong>Derived · <span data-i18n="derived">衍生計算</span></strong><p data-i18n="derivedDesc">由其他事實推算；不是第二個獨立證據。</p></div></div>
+<div class="trust-row"><span class="trust-code unknown">?</span><div><strong>Unknown · <span data-i18n="unknown">尚未確認</span></strong><p data-i18n="unknownDesc">來源或路徑不明，只能作為待查線索。</p></div></div>
+<p class="panel-note" data-i18n="trustFoot">「實測」不代表不會錯；標籤描述的是來源性質。</p>
+</section>
+</div>
+<a class="section-source bottom-source" href="https://github.com/Xinglanclever/XinSpect/blob/main/README.md" rel="noopener noreferrer" target="_blank"><span data-i18n="readmeEvidence">v3.13 官方文件依據</span> ↗</a>
+</section>
+<section aria-labelledby="evidenceTitle" class="section-block evidence-section" id="evidence">
+<div class="evidence-heading"><div><div class="section-kicker">EVIDENCE LAB · TRACEABLE BY DESIGN</div><h2 data-i18n="evidenceTitle" id="evidenceTitle">從讀值，到能回頭核對的證據</h2><p data-i18n="evidenceIntro">保留每項事實的來源、可信度與時間，方便比對變化；不把變化直接說成故障、換件或竄改。</p></div><div class="evidence-stamp"><span>SHA</span><strong>256</strong><small data-i18n="hashNote">完整性校驗<br/>不是數位簽章</small></div></div>
+<div class="evidence-grid">
+<article class="evidence-card evidence-card-main"><span class="evidence-count">01</span><div class="evidence-symbol">◈</div><h3 data-i18n="snapshotTitle">版本化「時間膠囊」快照</h3><p data-i18n="snapshotDesc">以 JSON 保存當時實際讀到的硬體事實，附建立時間、程式版本及 SHA-256 完整性雜湊；可用穩定鍵逐欄比對新增、消失與變更。</p><div class="evidence-callout" data-i18n="snapshotCallout">差異代表讀值不同，不自動推論原因。</div></article>
+<article class="evidence-card"><span class="evidence-count">02</span><div class="evidence-symbol">⌕</div><h3 data-i18n="lineageTitle">每欄保留資料血統</h3><p data-i18n="lineageDesc">可查看值由哪個來源提供、屬於哪種來源性質、何時讀取；沒有讀到的欄位不補成 0。</p><div class="evidence-callout" data-i18n="lineageCallout">來源回答「誰這樣說」。</div></article>
+<article class="evidence-card"><span class="evidence-count">03</span><div class="evidence-symbol">◌</div><h3 data-i18n="privacyShareTitle">分享前檢視隱私欄位</h3><p data-i18n="privacyShareDesc">快照預設遮蔽標記為敏感的值；遮蔽範圍取決於事實的敏感標記，匯出或分享前仍應檢查內容。</p><div class="evidence-callout" data-i18n="hashCaveat">SHA-256 可檢查修改，不證明作者或來源。</div></article>
+</div>
+<div class="evidence-footer"><span data-i18n="evidenceFoot">資料只保存當時能讀到的項目；裝置、權限或通路不同，快照內容也會不同。</span><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/Services/HardwareSnapshotService.cs" rel="noopener noreferrer" target="_blank"><span data-i18n="evidenceSource">閱讀證據實驗室說明</span> <span>↗</span></a></div>
+</section>
+<section aria-labelledby="docsTitle" class="section-block docs-section" id="docs">
+<div class="section-heading"><div><div class="section-kicker">DOCUMENTS · VERSIONED SOURCES</div><h2 data-i18n="docsTitle" id="docsTitle">功能文件與開源資料</h2><p data-i18n="docsIntro">功能資料連到目前 main README、官方發布說明及主線方法／限制文件；各項均標明來源。</p></div><span class="section-meta" data-i18n="docsMeta">每項連回官方儲存庫</span></div>
+<div class="docs-grid">
+<article class="doc-card doc-card-feature"><span class="doc-kind" data-i18n="docCurrent">目前 main 官方 README · v3.13</span><h3 data-i18n="docEncyclopediaTitle">功能百科（v3.13）</h3><p data-i18n="docEncyclopediaDesc">目前 main README 彙整 v3.13 功能、資料來源、可複算目錄數、判讀方式與限制。</p><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/README.md" rel="noopener noreferrer" target="_blank"><span data-i18n="openEncyclopedia">開啟官方百科</span> <span>↗</span></a></article>
+<article class="doc-card"><span class="doc-kind" data-i18n="docMethod">主線文件快照</span><h3 data-i18n="docMethodTitle">量測方法與限制</h3><p data-i18n="docMethodDesc">方法文件描述已實作的資料契約、狀態與來源區分；已知限制頁列出不可讀、未支援與刻意不做的事項。</p><div class="doc-links"><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/docs/spec/METHODOLOGY.md" rel="noopener noreferrer" target="_blank"><span data-i18n="methodLink">量測方法</span> ↗</a><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/docs/spec/LIMITATIONS.md" rel="noopener noreferrer" target="_blank"><span data-i18n="limitsLink">已知限制</span> ↗</a></div></article>
+</div>
+<div class="driver-notice"><div class="driver-mark">!</div><div><span class="section-kicker" data-i18n="driverKicker">低階硬體通路 · 權限與風險</span><h3 data-i18n="driverTitle">WinRing0 與 Administrator：先看清楚再執行</h3><p data-i18n="driverDesc">v3.13 來源記載 WinRing0 負責 MSR／PCI 設定空間；MMIO 後端會先實際探測，XsRegProbe 僅限開發機。這些低階通路涉及核心驅動與權限，並非每項功能都使用。</p><p class="driver-discrepancy" data-i18n="adminMismatch"><strong>啟動權限來源仍有落差：</strong>v3.13 <code>app.manifest</code> 要求 <code>requireAdministrator</code>，但 v3.13 README 說明未提權時部分頁面仍可開啟、低階感測等讀值會顯示「—」。請留意下載檔實際出現的 Windows UAC 提示。</p><div class="doc-links"><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/v3.13/app.manifest" rel="noopener noreferrer" target="_blank"><span data-i18n="manifestLink">檢視 v3.13 manifest</span> ↗</a><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/v3.13/Services/WinRing0Bridge.cs" rel="noopener noreferrer" target="_blank"><span data-i18n="bridgeLink">檢視 WinRing0 bridge</span> ↗</a><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/releases/tag/v3.13" rel="noopener noreferrer" target="_blank"><span data-i18n="releaseReqLink">官方發布與安裝說明</span> ↗</a></div></div></div>
+<div class="verification-panel" id="verification">
+<div class="section-heading"><div><div class="section-kicker">RELEASE TEST RECORD · CI</div><h3 data-i18n="verificationTitle">測試紀錄與執行範圍</h3><p data-i18n="verificationIntro">目前 main README 列出專案測試基線；本網站未執行 XinSpect 桌面程式測試。</p></div></div>
+<div class="verification-grid">
+<article class="verification-card"><span class="verify-label" data-i18n="verifyRelease">目前 main README 測試基線</span><strong>7,820</strong><p data-i18n="verifyReleaseDesc">目前 main README 列出 7,820 條專案測試基線；v3.10 發布說明另記載受影響測試 109/109 通過。這些是上游紀錄，不是本網站的測試結果。</p><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/README.md" rel="noopener noreferrer" target="_blank"><span data-i18n="releaseTestLink">檢視目前 main 官方 README</span> ↗</a></article>
+<article class="verification-card"><span class="verify-label" data-i18n="verifyCI">CI 與平台覆蓋</span><strong data-i18n="guardTests">選取的守門測試</strong><p data-i18n="verifyCIDesc">GitHub Actions 使用 windows-latest，執行建置、選定守門測試與文件檢查；不在託管 runner 跑完整硬體相依測試。沒有專用 Server 2025 CI 矩陣。</p><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/.github/workflows/ci.yml" rel="noopener noreferrer" target="_blank"><span data-i18n="ciLink">檢視主線 CI 工作流</span> ↗</a></article>
+</div>
+</div>
+<div class="license-banner"><div><span class="license-label">OPEN SOURCE</span><strong data-i18n="licenseTitle">AGPL-3.0-or-later · 開源授權</strong><p data-i18n="licenseDesc">兩種授權二選一、功能相同且不可疊加；商業授權可涵蓋任何版本。AGPL 下散布修改版或以網路服務提供他人使用時，須遵守相同授權公開原始碼。商標與標誌不在授權範圍；第三方元件另有各自條款。</p></div><div class="doc-links"><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/LICENSE" rel="noopener noreferrer" target="_blank"><span data-i18n="licenseLink">LICENSE</span> ↗</a><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/v3.13/COMMERCIAL-LICENSE.md" rel="noopener noreferrer" target="_blank"><span data-i18n="commercialLicenseLink">商業授權條款</span> ↗</a><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/THIRD-PARTY-NOTICES.md" rel="noopener noreferrer" target="_blank"><span data-i18n="thirdPartyLink">第三方 notices</span> ↗</a><a class="text-link" href="https://github.com/Xinglanclever/XinSpect" rel="noopener noreferrer" target="_blank"><span data-i18n="sourceCodeLink">原始碼倉庫</span> ↗</a></div></div>
+</section>
+<section aria-labelledby="historyTitle" class="section-block history-section" id="history">
+<div class="section-heading"><div><div class="section-kicker" id="historyKicker">FEATURE HISTORY · VERIFIED RELEASE MILESTONES</div><h2 id="historyTitle">功能沿革：按功能追蹤新增與修復</h2><p id="historyIntro">按功能整理官方發布記錄，只列明確記載的加入、擴充與修復。日期採 GitHub Release published_at 的 UTC 日期；提及不等於新增，未能確認的日期不作推定。</p></div><a class="section-source" href="https://github.com/Xinglanclever/XinSpect/releases" rel="noopener noreferrer" target="_blank"><span id="allReleasesLabel">全部官方 Releases</span> ↗</a></div>
+<div class="history-summary"><strong id="featureTotal">29</strong><span id="historySummary">項功能 · 精選官方里程碑，不逐版列出</span></div>
+<div class="history-toolbar"><label for="featureSearch" id="featureSearchLabel">搜尋功能、版號或修復內容</label><input aria-controls="featureList" autocomplete="off" id="featureSearch" placeholder="例如 SMART、v2.83、SPD" type="search"/><span aria-live="polite" class="history-count" id="featureCountStatus"></span></div>
+<p aria-live="polite" class="feature-load-state" id="featureLoadState">正在載入功能沿革…</p>
+<div aria-label="按功能整理的官方發布里程碑" class="feature-list" id="featureList"></div>
+<p class="history-source-note" id="featureSourceNote">每個新增、擴充或修復事件均連回官方 Release；日期依 GitHub published_at（UTC）標示。未明確記載的加入或修復不作推定。</p>
+</section>
+<section aria-labelledby="privacyTitle" class="section-block privacy-section" id="privacy">
+<div class="privacy-card"><div class="privacy-visual"><span class="privacy-orbit orbit-a"></span><span class="privacy-orbit orbit-b"></span><span class="privacy-shield">⛨</span><span class="privacy-caption">LOCAL BY DEFAULT</span></div>
+<div class="privacy-copy"><div class="section-kicker">PRIVACY · PERMISSION · LIMITS</div><h2 data-i18n="privacyTitle" id="privacyTitle">一般資料在本機處理；外連由你選擇</h2><p data-i18n="privacyIntro">一般硬體讀取、監控與歷史資料由 Windows 桌面程式在本機處理。若選用雲端 AI 評價，所送資料與用途依你設定的服務及其政策而定；使用本機 Ollama 時，請依本機設定核對資料路徑。</p>
+<div class="privacy-points"><div><span>01</span><strong data-i18n="privacyPoint1">唯讀是常見路徑</strong><small data-i18n="privacyPoint1Desc">少數會寫入系統或硬體的功能另有操作提示與限制；請依功能說明確認。</small></div><div><span>02</span><strong data-i18n="privacyPoint2">權限與驅動有影響</strong><small data-i18n="privacyPoint2Desc">低階感測／讀取受系統管理員權限、驅動及硬體支援度影響；WinRing0 風險見上方專節。</small></div><div><span>03</span><strong data-i18n="privacyPoint3">網站不讀取硬體</strong><small data-i18n="privacyPoint3Desc">此頁不呼叫硬體 API、不執行壓力測試，也不生成假讀值；內容只是產品說明。</small></div></div>
+<div class="privacy-actions"><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/docs/DATA-SOVEREIGNTY.md" rel="noopener noreferrer" target="_blank"><span data-i18n="privacyReadme">資料主權與隱私說明</span> <span>↗</span></a><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/main/docs/spec/LIMITATIONS.md" rel="noopener noreferrer" target="_blank"><span data-i18n="privacyLimits">已知限制與刻意不做的事</span> <span>↗</span></a></div>
+</div>
+</div>
+</section>
+<section aria-labelledby="downloadTitle" class="section-block download-section" id="download">
+<div class="download-card"><div class="download-copy"><div class="section-kicker">GET XINSPECT · OFFICIAL RELEASE</div><h2 data-i18n="downloadTitle" id="downloadTitle">在 Windows 上，讀取真實來源。</h2><p data-i18n="downloadDesc">v3.13 官方 Release 附有主程式、獨立守護程式、安裝器、XsRegProbe 驅動及 SHA256SUMS.txt。最新 main README 的主程式位元組數已與 Release 附件一致；v3.13 標籤版 README 保留較早數字，詳見下方註記。</p><div class="download-actions"><a class="button button-primary" href="https://github.com/Xinglanclever/XinSpect/releases/download/v3.13/XinSpect.exe" rel="noopener noreferrer" target="_blank"><span data-i18n="downloadLatest">下載 XinSpect.exe · v3.13</span> <span>↗</span></a><a class="button button-outline" href="https://github.com/Xinglanclever/XinSpect" rel="noopener noreferrer" target="_blank"><span data-i18n="viewSource">檢視原始碼</span> <span>↗</span></a></div><p class="download-release-link"><a class="text-link" data-i18n="footerLatest" href="https://github.com/Xinglanclever/XinSpect/releases/tag/v3.13" rel="noopener noreferrer" target="_blank">官方發布頁 ↗</a></p></div>
+<div class="requirements-card"><span class="requirements-label" data-i18n="requirements">系統需求 · v3.13</span><dl><div><dt data-i18n="osLabel">作業系統</dt><dd>Windows 10 1903+ / Windows 11</dd></div><div><dt data-i18n="archLabel">架構</dt><dd>x64</dd></div><div><dt data-i18n="runtimeLabel">執行環境</dt><dd>.NET 10 Desktop Runtime</dd></div><div><dt data-i18n="licenseLabel">授權</dt><dd data-i18n="licenseValue">AGPL-3.0-or-later 或商業授權（二選一）</dd></div></dl><p data-i18n="requirementsFoot">依 v3.13 README：Windows 10 1903 以上／Windows 11、x64、.NET 10 Desktop Runtime；權限來源差異見上方說明。</p></div></div>
+<p class="release-note" data-i18n="releaseNote">執行前請在官方 v3.13 Release 頁確認實際附件與 SHA256SUMS.txt；下方註明標籤版 README 的舊位元組數與目前 main 的更正。</p>
+<p class="release-note asset-mismatch-note" data-i18n="assetMismatchNote">附件查核（2026-11-01）：v3.13 Release 附有 XinSpect.exe（37,553,451 bytes）、BlueSquadronBridge.exe（6,502,948 bytes）、XinSpectDeploy.exe（16,896 bytes）、XsRegProbe.sys（24,064 bytes）及 SHA256SUMS.txt（334 bytes）。v3.13 標籤內 README 曾記主程式為 37,393,707 bytes；目前 main README 已修正為與 Release 附件相同的 37,553,451 bytes。請以官方發布頁附件與校驗清單為準。</p>
+<p class="release-note"><a class="text-link" href="https://github.com/Xinglanclever/XinSpect/blob/v3.13/README.md" rel="noopener noreferrer" target="_blank"><span data-i18n="releaseTaggedReadme">檢視 v3.13 標籤版 README</span> ↗</a></p>
+</section>
+<section aria-labelledby="reportSectionTitle" class="section-block report-section" id="report">
+<div class="section-heading"><div><div class="section-kicker">ISSUE REPORT · LOCAL REVIEW FIRST</div><h2 data-report-i18n="title" id="reportSectionTitle">先在本機整理，再決定是否提交。</h2><p data-report-i18n="intro">描述問題、選取文字記錄並檢查草稿。未按下雲端提交前，內容與附件只在此頁記憶體中；提交後才會送往 Cloudflare 私有資料庫。你也可改用 GitHub 手動備援。</p></div><span class="report-local-badge" data-report-i18n="localBadge">本機檢查・自主提交</span></div>
+<div class="report-memory"><span aria-hidden="true">01 / LOCAL</span><p data-report-i18n="memory">在你選擇分享前，內容只留在目前頁面的記憶體，不寫入 localStorage；重新整理或離開會清除。需要保留時請自行下載。</p></div>
+<div class="report-layout">
+<div aria-labelledby="reportFormTitle" class="report-panel report-editor" role="form">
+<h3 data-report-i18n="formTitle" id="reportFormTitle">描述問題</h3>
+<fieldset disabled="" id="reportFields"><legend class="visually-hidden" data-report-i18n="formTitle">描述問題</legend>
+<div class="report-field"><label data-report-i18n="category" for="reportCategory">問題分類</label><select id="reportCategory"><option data-report-i18n="crash" value="crash">崩潰</option><option data-report-i18n="credibility" value="credibility">真實性存疑</option><option data-report-i18n="hardware" value="hardware">新硬體</option><option data-report-i18n="database" value="database">資料庫錯誤</option><option data-report-i18n="data" value="data">資料錯誤</option><option data-report-i18n="improvement" value="improvement">改進方案</option><option data-report-i18n="other" value="other">其他</option></select></div>
+<div class="report-field"><label for="reportTitle"><span data-report-i18n="issueTitle">標題</span> <small data-report-i18n="required">必填</small></label><input autocomplete="off" data-report-placeholder="titlePlaceholder" id="reportTitle" maxlength="160" minlength="4" placeholder="例如：休眠恢復後，記憶體時序顯示不一致" required="" spellcheck="false" type="text"/></div>
+<div class="report-field"><label for="reportDescription"><span data-report-i18n="description">問題描述</span> <small data-report-i18n="required">必填</small></label><textarea autocomplete="off" data-report-placeholder="descriptionPlaceholder" id="reportDescription" maxlength="20000" minlength="20" placeholder="請說明實際現象、預期結果與差異；勿貼上密碼、權杖或未遮蔽的序號。" required="" rows="5" spellcheck="false"></textarea></div>
+<details class="report-optional"><summary data-report-i18n="optional">復現步驟、版本與系統（選填）</summary><div class="report-field"><label data-report-i18n="steps" for="reportSteps">復現步驟</label><textarea autocomplete="off" id="reportSteps" maxlength="8000" rows="3" spellcheck="false"></textarea></div><div class="report-field"><label data-report-i18n="version" for="reportVersion">XinSpect 版本</label><input autocomplete="off" id="reportVersion" maxlength="120" spellcheck="false" type="text"/></div><div class="report-field"><label data-report-i18n="system" for="reportSystem">系統與硬體資訊</label><textarea autocomplete="off" id="reportSystem" maxlength="2000" rows="2" spellcheck="false"></textarea></div></details>
+<div class="report-attachment-zone"><label data-report-i18n="filesLabel" for="reportFileInput">選取報告附件（只讀取到本機）</label><p class="report-hint" data-report-i18n="fileHelp" id="reportFileHelp">允許 .txt、.log、.md、.csv、.json、.xml、.html、.htm 與 PNG、JPG、JPEG、WebP 圖片。單檔最多 2 MiB、合計 8 MiB、最多 10 個；拒絕壓縮檔、執行檔與不相容格式。文字支援 UTF-8 與有 BOM 的 UTF-16。</p><input accept=".txt,.log,.md,.csv,.json,.xml,.html,.htm,image/png,image/jpeg,image/webp" aria-describedby="reportFileHelp reportFileSafety" id="reportFileInput" multiple="" type="file"/><p class="report-hint" data-report-i18n="fileSafety" id="reportFileSafety">文字附件中的 HTML 只當純文字檢查與預覽，不渲染、不執行；文字附件中的可疑腳本、事件處理器、外部資源與明顯金鑰會被拒絕。圖片不做 OCR 或防毒掃描，保留原始 bytes；可能含可見個資及 EXIF／位置等中繼資料，請先自行遮蔽或移除。本站不默默清除 metadata。</p></div>
+</fieldset>
+<ol aria-live="polite" class="report-files" id="reportFiles"><li class="report-no-files">尚未選取附件。</li></ol>
+<div class="report-actions"><button class="button report-primary" data-report-i18n="build" id="reportBuild" type="button">檢查並預覽草稿</button><button class="button report-secondary" data-report-i18n="clear" id="reportClear" type="button">清空本機內容</button></div>
+<p aria-live="polite" class="report-status" id="reportStatus" role="status">本機工具正在準備。</p>
+<noscript><p class="report-warning">本機回報工具需要 JavaScript。你仍可直接前往 GitHub，自行描述問題；本站不會自動提交。</p></noscript>
+</div>
+<div class="report-review-column">
+<div class="report-panel report-preview-panel"><span class="section-kicker">02 / REVIEW</span><h3 data-report-i18n="draftTitle">本機草稿預覽</h3><p class="report-hint" data-report-i18n="draftEmpty" id="reportPreviewState">尚未產生草稿。請填寫至少 4 字的標題與 20 字的問題描述，再按「檢查並預覽草稿」。</p><pre aria-label="本機草稿預覽" class="report-preview" id="reportPreview" tabindex="0"></pre><div class="report-actions"><button class="button report-secondary" data-report-i18n="copy" disabled="" id="reportCopy" type="button">複製草稿</button><button class="button report-secondary" data-report-i18n="download" disabled="" id="reportDownload" type="button">下載草稿 .txt</button></div></div>
+<div class="report-panel report-cloud-panel"><span class="section-kicker">03 / PRIVATE CLOUD</span><h3 data-report-cloud-i18n="title">提交至 Cloudflare 私有資料庫</h3><p data-report-cloud-i18n="intro">先在本機檢查並預覽。自願勾選同意後，Cloudflare Turnstile 會做人機驗證；完成驗證後仍須明確按下提交，才會傳送報告與通過檢查的文字／圖片附件。免登入。</p><label class="report-cloud-consent" for="reportCloudConsent"><input aria-describedby="reportCloudConsentText" disabled="" id="reportCloudConsent" type="checkbox"/><span data-report-cloud-i18n="consent" id="reportCloudConsentText">我已檢查並遮蔽個資，同意在按下提交後將本回報與通過檢查的文字／圖片附件送至 Cloudflare 私有資料庫。</span></label><div aria-label="Turnstile" class="report-turnstile" id="reportTurnstile"></div><p class="report-hint" data-report-cloud-i18n="turnstile">資料會交給 Cloudflare 作為人機驗證的一部分；不要求登入。</p><button class="button report-primary" data-report-cloud-i18n="submit" disabled="" id="reportCloudSubmit" type="button">提交回報</button><p aria-live="polite" class="report-status" id="reportCloudStatus" role="status">正在檢查雲端回報設定…</p><a class="text-link" href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer" target="_blank"><span data-report-cloud-i18n="docs">Cloudflare 隱私政策</span> ↗</a></div>
+<div class="report-panel report-github-panel"><span class="section-kicker">04 / MANUAL OPTION</span><h3 data-report-i18n="manualTitle">由你親自提交</h3><p data-report-i18n="manual">先檢查預覽並遮蔽個資；複製草稿或下載檔案，再自行前往 GitHub、貼上內容、附上所需檔案並提交。此連結不含任何表單內容或附件。</p><a class="button report-primary" href="https://github.com/Xinglanclever/XinSpect/issues" id="reportGitHub" rel="noopener noreferrer" target="_blank"><span data-report-i18n="github">前往 GitHub Issues</span><span aria-hidden="true">↗</span></a><p class="report-warning" data-report-i18n="githubWarning">公開提醒：GitHub 公開專案的 Issue 內容可能公開；在 GitHub 手動選取附件時就會立即上傳，附件可能可被公開存取，不一定等到 Issue 發佈。請先確認願意分享。</p><a class="text-link" href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/attaching-files" rel="noopener noreferrer" target="_blank"><span data-report-i18n="githubDocs">GitHub 官方附件說明</span> ↗</a></div>
+</div>
+</div>
+<p class="report-review-limit" data-report-i18n="reviewLimit">這是本機格式與風險靜態檢查，不是防毒、沙箱或真實性認證；無法保證內容安全或資料正確。保守規則可能拒絕含程式碼的正常記錄，請改用移除敏感資訊的最小純文字摘錄，仍需人工審核。</p>
+</section><section aria-labelledby="supportTitle" class="section-block support-section" id="support"><div class="support-card"><svg aria-hidden="true" class="support-star" viewbox="0 0 80 80"><path d="M40 9 49.6 28.5 71 31.6 55.5 46.8 59.2 68.2 40 58.1 20.8 68.2 24.5 46.8 9 31.6 30.4 28.5Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg><div class="support-copy"><div class="section-kicker">SUPPORT OPEN SOURCE</div><h2 data-report-i18n="supportTitle" id="supportTitle">一顆 Star，讓更多人找到 XinSpect。</h2><p data-report-i18n="supportIntro">如果這個開源專案對你有幫助，歡迎到 GitHub 給我們一顆 Star。這是收藏與鼓勵，不涉及付款；本站不會代你操作。</p><a class="button report-primary" href="https://github.com/Xinglanclever/XinSpect" id="supportGitHub" rel="noopener noreferrer" target="_blank"><span data-report-i18n="supportAction">到 GitHub 為 XinSpect 點 Star</span><span aria-hidden="true">↗</span></a><p class="report-hint" data-report-i18n="supportNote">需要 GitHub 帳戶；請在專案頁親自按下 Star。</p></div></div></section><footer class="page-footer"><div class="footer-row"><div class="footer-brand"><img alt="" aria-hidden="true" class="brand-mark small-mark" src="./assets/xinspect-brand-blue.png"/><span><strong>XinSpect「另種可能」</strong><small data-i18n="footerPhrase">讓事實有來源，讓未知保持未知。</small></span></div>
+<div class="footer-links"><a data-i18n="footerGithub" href="https://github.com/Xinglanclever/XinSpect" rel="noopener noreferrer" target="_blank">GitHub 專案 ↗</a><a data-i18n="footerDocs" href="#docs">文件索引 ↗</a><a data-i18n="footerLatest" href="https://github.com/Xinglanclever/XinSpect/releases/tag/v3.13" rel="noopener noreferrer" target="_blank">官方發布頁 ↗</a></div>
+<div class="footer-bottom"><span data-i18n="footerSource">依官方發布、對應程式碼與可追溯文件整理；實際讀值依平台、權限與硬體支援而定。</span><span data-i18n="licenseFooter">DUAL LICENSE · AGPL-3.0-OR-LATER OR COMMERCIAL · WINDOWS x64</span></div>
+</div><section aria-labelledby="neutralityTitle" class="neutrality-notice" id="neutralityNotice"><h2 data-i18n="neutralityTitle" id="neutralityTitle">立場說明</h2><p data-i18n="neutralityText">本網站與 XinSpect 軟體無任何政治立場；內容僅用於技術資訊、產品說明與工程討論。</p><p data-i18n="neutralityNoDefault">本站不預設任何政治立場。</p></section><section aria-labelledby="legalTitle" class="legal-notice" id="legalNotice"><h2 data-i18n="legalTitle" id="legalTitle">法律與資料處理說明</h2><p data-i18n="legalHosting">本站部署於 Cloudflare Workers 全球網路。依 Cloudflare 官方文件，Workers 預設在接近請求的位置執行，靜態資產亦由接近請求的位置提供；實際路由與處理方式取決於服務及網站設定，不代表伺服器固定於任何單一國家。</p><p data-i18n="legalResponsibility">本網站的營運與資料處理須遵守適用法律。法規適用、跨境處理及供應商處理細節，應參照 Cloudflare 官方政策與本網站實際設定；供應商的政策或條款，不構成本網站已取得法律合規或資料保護認證的保證。</p><p data-i18n="legalPractical">本介紹網站不掃描裝置硬體；語言與主題偏好儲存在你的瀏覽器。載入網站會向 Cloudflare 發出網路請求，連線與請求資訊可能依供應商政策及網站設定被處理。GitHub 等外部網站各有其政策。</p><div class="legal-links"><a data-i18n="legalPlacementLink" href="https://developers.cloudflare.com/workers/configuration/placement/" rel="noopener noreferrer" target="_blank">Cloudflare 官方執行位置說明</a><a data-i18n="legalPrivacyLink" href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer" target="_blank">Cloudflare 官方隱私政策</a></div></section></footer>
+</main>
+</div>
+</div>
+</body>
+</html>
+

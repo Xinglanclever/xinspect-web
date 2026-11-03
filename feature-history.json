@@ -1,0 +1,1179 @@
+{
+  "date_basis": "GitHub Release published_at (UTC)",
+  "items": [
+    {
+      "id": "surveillance-planning-calculators",
+      "category": {
+        "zh-Hant": "工程規劃與設計試算",
+        "zh-Hans": "工程规划与设计试算",
+        "en": "Engineering planning and estimates"
+      },
+      "title": {
+        "zh-Hant": "監控規劃：十項工程設計試算",
+        "zh-Hans": "监控规划：十项工程设计试算",
+        "en": "Surveillance planning: 10 engineering estimates"
+      },
+      "effect": {
+        "zh-Hant": "以宣告輸入計算 NVR 容量、接入頻寬、PoE 預算、交換機背板／包轉發、光纖損耗、攝影機壓降、佈線、RAID、無線覆蓋與 UPS／機櫃。這些是公式推導，不是硬體量測；資料不足時不造數。規劃以 JSON 保存在本機，只有存檔後才進入 plan.cctv.* 事實集與匯出報告；現場驗收仍須實測。",
+        "zh-Hans": "以声明输入计算 NVR 容量、接入带宽、PoE 预算、交换机背板／包转发、光纤损耗、摄像机压降、布线、RAID、无线覆盖与 UPS／机柜。这些是公式推导，不是硬件测量；资料不足时不造数字。规划以 JSON 保存在本机，只有保存后才进入 plan.cctv.* 事实集与导出报告；现场验收仍需实测。",
+        "en": "Calculate NVR capacity, ingress bandwidth, PoE budget, switching backplane/packet rate, fiber loss, camera voltage drop, cabling, RAID, Wi-Fi coverage, and UPS/rack capacity from declared inputs. These are derived estimates, not hardware measurements; missing inputs are not fabricated. Plans are stored locally as JSON and enter the plan.cctv.* fact set and exported reports only after saving; field measurements remain necessary for acceptance."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v3.13",
+          "date": "2026-11-01",
+          "detail": {
+            "zh-Hant": "新增十個監控工程計算器；規劃只在本機存檔後才加入事實集與報告。",
+            "zh-Hans": "新增十个监控工程计算器；规划仅在本机保存后才加入事实集与报告。",
+            "en": "Add ten surveillance-engineering calculators; a plan enters facts and reports only after being saved locally."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.13"
+        }
+      ]
+    },
+    {
+      "id": "blue-squadron-default-and-security-baseline",
+      "category": {
+        "zh-Hant": "韌體與安全",
+        "zh-Hans": "韧体与安全",
+        "en": "Firmware and security"
+      },
+      "title": {
+        "zh-Hant": "藍色中隊預設關閉與 Windows 11 安全基線",
+        "zh-Hans": "蓝色中队默认关闭与 Windows 11 安全基线",
+        "en": "Blue Squadron default-off and Windows 11 security baseline"
+      },
+      "effect": {
+        "zh-Hant": "新安裝預設關閉常駐守護進程；使用者可自行在安全頁啟用，唯讀態勢評估照常。新增 SMB 簽章／加密、NTLM、ASR、Smart App Control、PowerShell 記錄、Defender PUA 與自動播放等檢查；讀不到的資料列為「未評估」，不記為通過。",
+        "zh-Hans": "新安装默认关闭常驻守护进程；用户可自行在安全页启用，只读态势评估照常。新增 SMB 签名／加密、NTLM、ASR、Smart App Control、PowerShell 记录、Defender PUA 与自动播放等检查；读取不到的数据列为“未评估”，不记为通过。",
+        "en": "New installs keep the resident guard process off by default; users can enable it in the security page, while read-only posture assessment continues. New checks cover SMB signing/encryption, NTLM, ASR, Smart App Control, PowerShell logging, Defender PUA, and AutoPlay. Unreadable data is marked not assessed rather than passed."
+      },
+      "events": [
+        {
+          "kind": "expanded",
+          "version": "v3.13",
+          "date": "2026-11-01",
+          "detail": {
+            "zh-Hant": "新安裝的守護進程改為預設關閉，並擴充安全基線；未知狀態不再被算作通過。",
+            "zh-Hans": "新安装的守护进程改为默认关闭，并扩充安全基线；未知状态不再被算作通过。",
+            "en": "Default the guard process to off on new installs and expand security checks so unknown states are not counted as passes."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.13"
+        }
+      ]
+    },
+    {
+      "id": "m2-u2-nonblocking-analysis",
+      "category": {
+        "zh-Hant": "穩定性與修正",
+        "zh-Hans": "稳定性与修复",
+        "en": "Reliability and fixes"
+      },
+      "title": {
+        "zh-Hant": "M.2／U.2 分析改為非同步啟動",
+        "zh-Hans": "M.2／U.2 分析改为异步启动",
+        "en": "Make M.2/U.2 analysis nonblocking at startup"
+      },
+      "effect": {
+        "zh-Hant": "M.2 分析改為背景收集、回 UI 執行緒套用；磁碟 WMI 清單有 3 秒上限。逾時會明確說明「WMI 無回應」，讀取錯誤另行標示，避免把空白誤當成沒有磁碟。",
+        "zh-Hans": "M.2 分析改为后台收集、回 UI 线程应用；磁盘 WMI 清单有 3 秒上限。超时会明确说明“WMI 无响应”，读取错误另行标注，避免把空白误当成没有磁盘。",
+        "en": "M.2 analysis is collected in the background and applied on the UI thread; disk WMI enumeration is bounded at 3 seconds. A timeout is distinguished from a read failure so a blank result is not mistaken for no disks."
+      },
+      "events": [
+        {
+          "kind": "fixed",
+          "version": "v3.13",
+          "date": "2026-11-01",
+          "detail": {
+            "zh-Hant": "將 M.2／U.2 收集移至背景，設定磁碟 WMI 3 秒上限，並區分逾時與讀取失敗。",
+            "zh-Hans": "将 M.2／U.2 收集移至后台，设置磁盘 WMI 3 秒上限，并区分超时与读取失败。",
+            "en": "Move M.2/U.2 collection to the background, cap disk WMI at 3 seconds, and distinguish timeouts from read failures."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.13"
+        }
+      ]
+    },
+    {
+      "id": "platform-trust",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬体资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "平台可信度與逐核微碼一致性",
+        "zh-Hans": "平台可信度与逐核微码一致性",
+        "en": "Platform trust and per-core microcode consistency"
+      },
+      "effect": {
+        "zh-Hant": "辨識 hypervisor、VBS 或 HVCI 可能介入 MSR 讀值的情況，並把 BIOS、Windows、MSR 與 Intel ME 韌體來源放在一起核對；另可逐核心比較微碼版本，不以猜測值補缺資料。",
+        "zh-Hans": "辨识 hypervisor、VBS 或 HVCI 可能介入 MSR 读值的情况，并把 BIOS、Windows、MSR 与 Intel ME 韧体来源放在一起核对；另可逐核心比较微码版本，不以猜测值补缺资料。",
+        "en": "Identify cases where a hypervisor, VBS, or HVCI may affect MSR readings; cross-check BIOS, Windows, MSR, and Intel ME firmware sources, and compare microcode versions per core without guessing missing data."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v1.5.0",
+          "date": "2026-08-30",
+          "detail": {
+            "zh-Hant": "新增平台可信度卡片，並交叉核對 BIOS／Windows／MSR 微碼來源與 Intel ME 韌體版本。",
+            "zh-Hans": "新增平台可信度卡片，并交叉核对 BIOS／Windows／MSR 微码来源与 Intel ME 韧体版本。",
+            "en": "Add a platform-trust card and cross-check BIOS/Windows/MSR microcode sources with the Intel ME firmware version."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.5.0"
+        },
+        {
+          "kind": "added",
+          "version": "v2.0.2",
+          "date": "2026-09-27",
+          "detail": {
+            "zh-Hant": "新增經簽章驅動唯讀讀取各實體核心 MSR 0x8B 的微碼版本，辨識核心間是否一致。",
+            "zh-Hans": "新增经签章驱动唯读读取各实体核心 MSR 0x8B 的微码版本，辨识核心间是否一致。",
+            "en": "Add read-only microcode-version reads for MSR 0x8B on each physical core through a signed driver, identifying whether cores are consistent."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.0.2"
+        }
+      ]
+    },
+    {
+      "id": "smi-cstate",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬体资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "SMI 與 C-state 隱形停頓觀測",
+        "zh-Hans": "SMI 与 C-state 隐形停顿观测",
+        "en": "Observing hidden SMI and C-state stalls"
+      },
+      "effect": {
+        "zh-Hant": "讀取系統管理中斷次數與封裝／核心 C-state 駐留，協助追查可能造成音訊爆音或卡頓的韌體停頓。硬體沒有提供每次 SMI 的耗時，因此只呈現頻率，不推算延遲。",
+        "zh-Hans": "读取系统管理中断次数与封装／核心 C-state 驻留，协助追查可能造成音讯爆音或卡顿的韧体停顿。硬体没有提供每次 SMI 的耗时，因此只呈现频率，不推算延迟。",
+        "en": "Read system-management interrupt counts and package/core C-state residency to investigate firmware stalls that may cause audio pops or stutter. Hardware provides no duration for each SMI, so show frequency only and do not infer latency."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v1.8.2",
+          "date": "2026-09-02",
+          "detail": {
+            "zh-Hant": "新增處理器「隱形停頓」卡片，呈現 SMI 次數與 C-state 駐留。",
+            "zh-Hans": "新增处理器「隐形停顿」卡片，呈现 SMI 次数与 C-state 驻留。",
+            "en": "Add a processor “hidden stalls” card showing SMI counts and C-state residency."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.8.2"
+        }
+      ]
+    },
+    {
+      "id": "memory-spd",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬体资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "記憶體 SPD 直讀與一致性稽核",
+        "zh-Hans": "记忆体 SPD 直读与一致性稽核",
+        "en": "Direct memory SPD reading and consistency audit"
+      },
+      "effect": {
+        "zh-Hant": "直接經 SMBus 讀取 DIMM SPD EEPROM，查看模組、顆粒製造商及 JEDEC／XMP 原始時序；另可稽核 SPD 一致性。讀取失敗、全 0／FF 與資料不一致會分開呈現。",
+        "zh-Hans": "直接经 SMBus 读取 DIMM SPD EEPROM，查看模组、颗粒制造商及 JEDEC／XMP 原始时序；另可稽核 SPD 一致性。读取失败、全 0／FF 与资料不一致会分开呈现。",
+        "en": "Read DIMM SPD EEPROMs directly through SMBus to inspect module and chip manufacturers and raw JEDEC/XMP timings; audit SPD consistency. Read failures, all-0/FF data, and inconsistencies are shown separately."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v1.9.2",
+          "date": "2026-09-05",
+          "detail": {
+            "zh-Hant": "新增由 XinSpect 自行經 SMBus 讀取 SPD EEPROM 的路徑與模組資訊卡片。",
+            "zh-Hans": "新增由 XinSpect 自行经 SMBus 读取 SPD EEPROM 的路径与模组资讯卡片。",
+            "en": "Add a XinSpect path for reading SPD EEPROMs through SMBus and a module-information card."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.9.2"
+        },
+        {
+          "kind": "fixed",
+          "version": "v1.9.9",
+          "date": "2026-09-10",
+          "detail": {
+            "zh-Hant": "修正部分已知 SPD CRC 狀態造成的誤判。",
+            "zh-Hans": "修正部分已知 SPD CRC 状态造成的误判。",
+            "en": "Fix false positives caused by some known SPD CRC states."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.9.9"
+        },
+        {
+          "kind": "added",
+          "version": "v1.9.9",
+          "date": "2026-09-10",
+          "detail": {
+            "zh-Hant": "新增 SPD consistency audit，納入可保存的快照、裝置診斷與證據時間軸。",
+            "zh-Hans": "新增 SPD consistency audit，纳入可保存的快照、装置诊断与证据时间轴。",
+            "en": "Add SPD consistency audit, including savable snapshots, device diagnostics, and an evidence timeline."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.9.9"
+        },
+        {
+          "kind": "fixed",
+          "version": "v2.0.5",
+          "date": "2026-09-30",
+          "detail": {
+            "zh-Hant": "修正 SPD consistency audit 將 PC4 頻寬數字誤判為 MT/s 的問題。",
+            "zh-Hans": "修正 SPD consistency audit 将 PC4 频宽数字误判为 MT/s 的问题。",
+            "en": "Fix SPD consistency audit misclassifying a PC4 bandwidth number as MT/s."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.0.5"
+        }
+      ]
+    },
+    {
+      "id": "memory-bandwidth",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬体资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "記憶體頻寬飽和與負載延遲量測",
+        "zh-Hans": "记忆体频宽饱和与负载延迟量测",
+        "en": "Memory bandwidth saturation and load-latency measurement"
+      },
+      "effect": {
+        "zh-Hant": "以逐級增加執行緒的負載找出實際頻寬飽和點，再量測負載延遲；理論上限會標示所依據的 SMBIOS 速度與通道假設。",
+        "zh-Hans": "以逐级增加执行绪的负载找出实际频宽饱和点，再量测负载延迟；理论上限会标示所依据的 SMBIOS 速度与通道假设。",
+        "en": "Increase thread load step by step to find the actual bandwidth saturation point, then measure load latency; theoretical limits identify the SMBIOS speed and channel assumptions they rely on."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v1.7.1",
+          "date": "2026-08-31",
+          "detail": {
+            "zh-Hant": "新增記憶體頻寬與負載延遲量測。",
+            "zh-Hans": "新增记忆体频宽与负载延迟量测。",
+            "en": "Add memory-bandwidth and load-latency measurement."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.7.1"
+        },
+        {
+          "kind": "fixed",
+          "version": "v1.9.1",
+          "date": "2026-09-03",
+          "detail": {
+            "zh-Hant": "修復記憶體延遲曲線頁因 XAML 資源鍵錯誤而當機，以及可信度欄顯示異常。",
+            "zh-Hans": "修复记忆体延迟曲线页因 XAML 资源键错误而当机，以及可信度栏显示异常。",
+            "en": "Fix crashes on the memory-latency curve page caused by an incorrect XAML resource key, as well as abnormal trust-column display."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.9.1"
+        }
+      ]
+    },
+    {
+      "id": "storage-smart",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬体资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "SMART 硬體識別與儲存健康",
+        "zh-Hans": "SMART 硬体识别与储存健康",
+        "en": "SMART hardware identification and storage health"
+      },
+      "effect": {
+        "zh-Hant": "在健康屬性之外讀取裝置型號、序號、韌體、容量、磁區大小與 TRIM 等識別資料；SMART 的讀取錯誤與門檻資料缺失會區分標示。",
+        "zh-Hans": "在健康属性之外读取装置型号、序号、韧体、容量、磁区大小与 TRIM 等识别资料；SMART 的读取错误与门槛资料缺失会区分标示。",
+        "en": "Read device model, serial number, firmware, capacity, sector size, TRIM, and other identification data in addition to health attributes; flag SMART read errors and missing threshold data separately."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v1.7.6",
+          "date": "2026-09-01",
+          "detail": {
+            "zh-Hant": "新增儲存裝置硬體識別資料，並區分 NVMe Identify Controller 與 SATA IDENTIFY DEVICE 路徑。",
+            "zh-Hans": "新增储存装置硬体识别资料，并区分 NVMe Identify Controller 与 SATA IDENTIFY DEVICE 路径。",
+            "en": "Add storage-device hardware identification data and distinguish the NVMe Identify Controller and SATA IDENTIFY DEVICE paths."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.7.6"
+        },
+        {
+          "kind": "fixed",
+          "version": "v1.7.7",
+          "date": "2026-09-02",
+          "detail": {
+            "zh-Hant": "修正未選取預設磁碟時 SMART 按鈕無反應，以及測試忽略所選磁碟的問題。",
+            "zh-Hans": "修正未选取预设磁碟时 SMART 按钮无反应，以及测试忽略所选磁碟的问题。",
+            "en": "Fix the SMART button doing nothing when no default disk is selected and tests ignoring the selected disk."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.7.7"
+        },
+        {
+          "kind": "fixed",
+          "version": "v2.50",
+          "date": "2026-10-09",
+          "detail": {
+            "zh-Hant": "修正 SMART failing-now 回傳 null 導致崩潰，以及讀不到門檻表仍被當成可比較門檻的問題。",
+            "zh-Hans": "修正 SMART failing-now 回传 null 导致崩溃，以及读不到门槛表仍被当成可比较门槛的问题。",
+            "en": "Fix crashes caused by SMART failing-now returning null and threshold tables that could not be read still being treated as comparable thresholds."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.50"
+        }
+      ]
+    },
+    {
+      "id": "nvme-logs",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬体资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "NVMe 錯誤紀錄與健康查詢",
+        "zh-Hans": "NVMe 错误纪录与健康查询",
+        "en": "NVMe error logs and health queries"
+      },
+      "effect": {
+        "zh-Hant": "讀取 NVMe 錯誤資訊紀錄及健康頁資料，讓錯誤序號、命令、狀態碼與相關 LBA 可供檢視；查詢逾時會中止，不應拖住整個收集流程。",
+        "zh-Hans": "读取 NVMe 错误资讯纪录及健康页资料，让错误序号、命令、状态码与相关 LBA 可供检视；查询逾时会中止，不应拖住整个收集流程。",
+        "en": "Read NVMe error information logs and health-page data so error sequence numbers, commands, status codes, and related LBAs can be inspected; abort timed-out queries so they do not hold up collection."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v1.9.1-B1",
+          "date": "2026-09-03",
+          "detail": {
+            "zh-Hant": "新增 NVMe Error Information Log Page 0x01，並修正健康紀錄頁的欄位位移。",
+            "zh-Hans": "新增 NVMe Error Information Log Page 0x01，并修正健康纪录页的栏位位移。",
+            "en": "Add NVMe Error Information Log Page 0x01 and fix health-log field offsets."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.9.1-B1"
+        },
+        {
+          "kind": "fixed",
+          "version": "v2.83",
+          "date": "2026-10-14",
+          "detail": {
+            "zh-Hant": "修復 NVMe 查詢卡在驅動逾時佇列的問題，改用可取消的 overlapped I/O 與外層等待預算。",
+            "zh-Hans": "修复 NVMe 查询卡在驱动逾时伫列的问题，改用可取消的 overlapped I/O 与外层等待预算。",
+            "en": "Fix NVMe queries stuck in the driver timeout queue by using cancellable overlapped I/O and an outer wait budget."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.83"
+        },
+        {
+          "kind": "fixed",
+          "version": "v2.86",
+          "date": "2026-10-18",
+          "detail": {
+            "zh-Hant": "修正 NVMe 健康探針可能卡在開檔或 IOCTL 的問題，加入專屬執行緒、逾時預算與斷路器冷卻。",
+            "zh-Hans": "修正 NVMe 健康探针可能卡在开档或 IOCTL 的问题，加入专属执行绪、逾时预算与断路器冷却。",
+            "en": "Fix NVMe health probes hanging on file open or IOCTL by adding a dedicated thread, timeout budget, and circuit-breaker cooldown."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.86"
+        }
+      ]
+    },
+    {
+      "id": "smart-semantics",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬体资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "SMART 廠商屬性語意表",
+        "zh-Hans": "SMART 厂商属性语意表",
+        "en": "SMART vendor-attribute semantics table"
+      },
+      "effect": {
+        "zh-Hant": "以多家廠商的屬性對照資料解讀 SMART 欄位，同時保留 raw 與 normalized 表述及來源；只有有依據的屬性才解析名稱。",
+        "zh-Hans": "以多家厂商的属性对照资料解读 SMART 栏位，同时保留 raw 与 normalized 表述及来源；只有有依据的属性才解析名称。",
+        "en": "Interpret SMART fields using attribute mappings from multiple vendors while retaining raw and normalized representations and sources; resolve names only for attributes supported by evidence."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.89",
+          "date": "2026-10-25",
+          "detail": {
+            "zh-Hant": "新增六家廠商共 140 列 SMART 屬性語意資料。",
+            "zh-Hans": "新增六家厂商共 140 列 SMART 属性语意资料。",
+            "en": "Add 140 rows of SMART attribute semantics data from six vendors."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.89"
+        },
+        {
+          "kind": "fixed",
+          "version": "v2.91",
+          "date": "2026-10-26",
+          "detail": {
+            "zh-Hant": "修正 SMART 廠商屬性對照已登錄但未接入實際資料的缺口，並加入有界限的 ATA 列舉。",
+            "zh-Hans": "修正 SMART 厂商属性对照已登录但未接入实际资料的缺口，并加入有界限的 ATA 列举。",
+            "en": "Fix gaps where registered SMART vendor mappings were not connected to actual data, and add bounded ATA enumeration."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.91"
+        }
+      ]
+    },
+    {
+      "id": "pcie-links",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬体资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "PCIe 鏈路落差與整機瓶頸分析",
+        "zh-Hans": "PCIe 链路落差与整机瓶颈分析",
+        "en": "PCIe link gaps and system bottleneck analysis"
+      },
+      "effect": {
+        "zh-Hant": "將已量到的事實集中用於找出可能瓶頸，並比較 PCIe 協商速度／寬度與裝置能力；會區分閒置省電、寬度受限與上游上限，不把鏈路降速直接判成故障。",
+        "zh-Hans": "将已量到的事实集中用于找出可能瓶颈，并比较 PCIe 协商速度／宽度与装置能力；会区分闲置省电、宽度受限与上游上限，不把链路降速直接判成故障。",
+        "en": "Use measured facts to identify possible bottlenecks and compare PCIe negotiated speed/width with device capability; distinguish idle power saving, width limits, and upstream limits instead of treating reduced link speed as a fault."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v1.7.1",
+          "date": "2026-08-31",
+          "detail": {
+            "zh-Hant": "新增瓶頸分析頁與 PCIe 鏈路檢視。",
+            "zh-Hans": "新增瓶颈分析页与 PCIe 链路检视。",
+            "en": "Add a bottleneck-analysis page and PCIe link inspection."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.7.1"
+        },
+        {
+          "kind": "fixed",
+          "version": "v2.0.0",
+          "date": "2026-09-18",
+          "detail": {
+            "zh-Hant": "修正 PCIe 分析依賴不存在的登錄值而顯示未知，改由服務直接讀取 PCI 設定空間。",
+            "zh-Hans": "修正 PCIe 分析依赖不存在的登录值而显示未知，改由服务直接读取 PCI 设定空间。",
+            "en": "Fix PCIe analysis showing unknown because it depended on a nonexistent registry value; read PCI configuration space directly through the service instead."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.0.0"
+        },
+        {
+          "kind": "expanded",
+          "version": "v2.31",
+          "date": "2026-10-08",
+          "detail": {
+            "zh-Hant": "擴充鏈路落差分類並納入上游埠能力，分開呈現受限、待確認與未判定情況。",
+            "zh-Hans": "扩充链路落差分类并纳入上游埠能力，分开呈现受限、待确认与未判定情况。",
+            "en": "Expand link-gap categories and include upstream-port capability, presenting limited, pending-confirmation, and undetermined cases separately."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.31"
+        }
+      ]
+    },
+    {
+      "id": "pcie-aer",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬体资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "PCIe AER 與擴充能力鏈掃描",
+        "zh-Hans": "PCIe AER 与扩充能力链扫描",
+        "en": "PCIe AER and extended-capability-chain scanning"
+      },
+      "effect": {
+        "zh-Hant": "唯讀掃描 PCIe 設定空間的錯誤回報與裝置能力；能力「存在」與「啟用」分開呈現，通道不可用時不把未讀到解釋成沒有錯誤。",
+        "zh-Hans": "唯读扫描 PCIe 设定空间的错误回报与装置能力；能力「存在」与「启用」分开呈现，通道不可用时不把未读到解释成没有错误。",
+        "en": "Read-only scan PCIe configuration-space error reporting and device capabilities; show capability “present” separately from “enabled,” and do not interpret an unreadable channel as having no errors."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.1.0",
+          "date": "2026-10-01",
+          "detail": {
+            "zh-Hant": "新增 PCIe AER 錯誤狀態掃描。",
+            "zh-Hans": "新增 PCIe AER 错误状态扫描。",
+            "en": "Add PCIe AER error-status scanning."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.1.0"
+        },
+        {
+          "kind": "expanded",
+          "version": "v2.67",
+          "date": "2026-10-11",
+          "detail": {
+            "zh-Hant": "擴充 legacy 與 extended capability chain 解碼，補上 AER 狀態、遮罩、嚴重度及多項電源／隔離能力欄位。",
+            "zh-Hans": "扩充 legacy 与 extended capability chain 解码，补上 AER 状态、遮罩、严重度及多项电源／隔离能力栏位。",
+            "en": "Expand legacy and extended capability-chain decoding, adding AER status, masks, severity, and multiple power/isolation capability fields."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.67"
+        }
+      ]
+    },
+    {
+      "id": "non-nvidia-gpu",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬体资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "Intel／AMD 顯示卡唯讀遙測",
+        "zh-Hans": "Intel／AMD 显示卡唯读遥测",
+        "en": "Read-only telemetry for Intel/AMD graphics"
+      },
+      "effect": {
+        "zh-Hant": "為非 NVIDIA 顯示卡加入各自可用的唯讀資料路徑：Intel 列舉型號、顯存與驅動版本；AMD Radeon 讀取溫度、風扇轉速與功耗。結果受硬體與通路支援限制。",
+        "zh-Hans": "为非 NVIDIA 显示卡加入各自可用的唯读资料路径：Intel 列举型号、显存与驱动版本；AMD Radeon 读取温度、风扇转速与功耗。结果受硬体与通路支援限制。",
+        "en": "Add available read-only paths for non-NVIDIA graphics: Intel enumerates model, VRAM, and driver version; AMD Radeon reads temperature, fan speed, and power. Results are limited by hardware and path support."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.25",
+          "date": "2026-10-06",
+          "detail": {
+            "zh-Hant": "新增 Intel Level Zero 與 AMD ADL 的 GPU 資料讀取路徑。",
+            "zh-Hans": "新增 Intel Level Zero 与 AMD ADL 的 GPU 资料读取路径。",
+            "en": "Add GPU data-reading paths using Intel Level Zero and AMD ADL."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.25"
+        }
+      ]
+    },
+    {
+      "id": "firmware-security",
+      "category": {
+        "zh-Hant": "韌體與安全",
+        "zh-Hans": "韧体与安全",
+        "en": "Firmware and security"
+      },
+      "title": {
+        "zh-Hant": "韌體安全頁與低階唯讀通路",
+        "zh-Hans": "韧体安全页与低阶唯读通路",
+        "en": "Firmware security page and low-level read-only paths"
+      },
+      "effect": {
+        "zh-Hant": "集中呈現 BIOS、SMRAM、Intel ME 與 SPI 保護等韌體事實；部分 MSR、PCI、I/O 與 MMIO 讀值須有可用驅動及相應權限。這不代表所有功能都依賴 WinRing0。",
+        "zh-Hans": "集中呈现 BIOS、SMRAM、Intel ME 与 SPI 保护等韧体事实；部分 MSR、PCI、I/O 与 MMIO 读值须有可用驱动及相应权限。这不代表所有功能都依赖 WinRing0。",
+        "en": "Present BIOS, SMRAM, Intel ME, and SPI-protection facts together; some MSR, PCI, I/O, and MMIO readings require an available driver and appropriate permissions. This does not mean every feature depends on WinRing0."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.1.0",
+          "date": "2026-10-01",
+          "detail": {
+            "zh-Hant": "新增韌體安全頁、深層核心存取開關及 XsRegProbe 白名單唯讀驅動路徑。",
+            "zh-Hans": "新增韧体安全页、深层核心存取开关及 XsRegProbe 白名单唯读驱动路径。",
+            "en": "Add a firmware-security page, a deep-core-access toggle, and the XsRegProbe allowlisted read-only driver path."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.1.0"
+        },
+        {
+          "kind": "fixed",
+          "version": "v2.43",
+          "date": "2026-10-09",
+          "detail": {
+            "zh-Hant": "修正使用者端找不到 WinRing0 驅動而使部分低階讀取路徑失效的部署問題。",
+            "zh-Hans": "修正使用者端找不到 WinRing0 驱动而使部分低阶读取路径失效的部署问题。",
+            "en": "Fix deployment issues where the client could not find the WinRing0 driver, disabling some low-level read paths."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.43"
+        }
+      ]
+    },
+    {
+      "id": "uefi-boot",
+      "category": {
+        "zh-Hant": "韌體與安全",
+        "zh-Hans": "韧体与安全",
+        "en": "Firmware and security"
+      },
+      "title": {
+        "zh-Hant": "UEFI 安全開機與 EFI 分割區盤點",
+        "zh-Hans": "UEFI 安全开机与 EFI 分割区盘点",
+        "en": "UEFI Secure Boot and EFI partition inventory"
+      },
+      "effect": {
+        "zh-Hant": "檢視 db、dbx、KEK、PK 等安全開機資料庫與 Boot#### 條目；另可列出 EFI 分割區的 .efi 檔案並與撤銷清單交叉引用。命中只代表攻擊面線索，不直接等同中毒判定。",
+        "zh-Hans": "检视 db、dbx、KEK、PK 等安全开机资料库与 Boot#### 条目；另可列出 EFI 分割区的 .efi 档案并与撤销清单交叉引用。命中只代表攻击面线索，不直接等同中毒判定。",
+        "en": "Inspect db, dbx, KEK, PK, and other Secure Boot databases and Boot#### entries; list .efi files on the EFI partition and cross-reference them with the revocation list. A match is only an attack-surface clue, not a direct malware determination."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.25",
+          "date": "2026-10-06",
+          "detail": {
+            "zh-Hant": "新增 UEFI db／dbx／KEK／PK 簽章資料庫解碼與 Boot#### 名稱。",
+            "zh-Hans": "新增 UEFI db／dbx／KEK／PK 签章资料库解码与 Boot#### 名称。",
+            "en": "Add decoding for UEFI db/dbx/KEK/PK signature databases and Boot#### names."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.25"
+        },
+        {
+          "kind": "added",
+          "version": "v2.43",
+          "date": "2026-10-09",
+          "detail": {
+            "zh-Hant": "新增 EFI 系統分割區檔案掃描，列出 .efi 檔名、大小與 SHA-256，並與 dbx 撤銷清單交叉引用。",
+            "zh-Hans": "新增 EFI 系统分割区档案扫描，列出 .efi 档名、大小与 SHA-256，并与 dbx 撤销清单交叉引用。",
+            "en": "Add EFI system-partition file scanning, listing .efi names, sizes, and SHA-256 values and cross-referencing the dbx revocation list."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.43"
+        },
+        {
+          "kind": "fixed",
+          "version": "v2.86",
+          "date": "2026-10-18",
+          "detail": {
+            "zh-Hant": "修正 UEFI 變數權限啟用、大小查詢與 db／dbx GUID 問題，恢復資料讀取並區分不適用、未支援與讀取失敗。",
+            "zh-Hans": "修正 UEFI 变数权限启用、大小查询与 db／dbx GUID 问题，恢复资料读取并区分不适用、未支援与读取失败。",
+            "en": "Fix UEFI variable-permission enabling, size queries, and db/dbx GUID issues; restore data reading and distinguish not applicable, unsupported, and read-failure states."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.86"
+        }
+      ]
+    },
+    {
+      "id": "local-security-audit",
+      "category": {
+        "zh-Hant": "韌體與安全",
+        "zh-Hans": "韧体与安全",
+        "en": "Firmware and security"
+      },
+      "title": {
+        "zh-Hant": "本機持久化攻擊面安全稽核",
+        "zh-Hans": "本机持久化攻击面安全稽核",
+        "en": "Local persistence attack-surface security audit"
+      },
+      "effect": {
+        "zh-Hant": "唯讀檢查 IFEO Debugger、Winlogon Shell、AppInit_DLLs、輔助功能 Debugger 與系統代理等登錄檔設定；發現項目作為攻擊面事實，不直接下中毒結論。",
+        "zh-Hans": "唯读检查 IFEO Debugger、Winlogon Shell、AppInit_DLLs、辅助功能 Debugger 与系统代理等登录档设定；发现项目作为攻击面事实，不直接下中毒结论。",
+        "en": "Read-only check registry settings such as IFEO Debugger, Winlogon Shell, AppInit_DLLs, Accessibility Debugger, and system proxies; findings are attack-surface facts and do not directly establish infection."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.55",
+          "date": "2026-10-10",
+          "detail": {
+            "zh-Hant": "新增多項本機安全稽核檢查，並以三態保留讀取限制。",
+            "zh-Hans": "新增多项本机安全稽核检查，并以三态保留读取限制。",
+            "en": "Add multiple local security-audit checks while preserving read limitations with three states."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.55"
+        }
+      ]
+    },
+    {
+      "id": "fact-reconciliation",
+      "category": {
+        "zh-Hant": "證據與監控",
+        "zh-Hans": "证据与监控",
+        "en": "Evidence and monitoring"
+      },
+      "title": {
+        "zh-Hant": "硬體事實對帳與可匯出的整機報告",
+        "zh-Hans": "硬体事实对帐与可汇出的整机报告",
+        "en": "Hardware fact reconciliation and exportable system reports"
+      },
+      "effect": {
+        "zh-Hant": "逐項比對硬體事實，結果分為相符、矛盾或讀不到；每筆保留值、單位、方法、權限與來源。後續可匯出帶時間戳的整機報告供分享或留存。",
+        "zh-Hans": "逐项比对硬体事实，结果分为相符、矛盾或读不到；每笔保留值、单位、方法、权限与来源。后续可汇出带时间戳的整机报告供分享或留存。",
+        "en": "Compare hardware facts item by item and classify results as matching, contradictory, or unreadable; retain each value, unit, method, permission, and source. Timestamped system reports can be exported for sharing or retention."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.0.1",
+          "date": "2026-09-25",
+          "detail": {
+            "zh-Hant": "新增硬體事實對帳與可追溯的來源血統欄位。",
+            "zh-Hans": "新增硬体事实对帐与可追溯的来源血统栏位。",
+            "en": "Add hardware fact reconciliation and traceable source-provenance fields."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.0.1"
+        },
+        {
+          "kind": "added",
+          "version": "v2.0.2",
+          "date": "2026-09-27",
+          "detail": {
+            "zh-Hant": "新增按狀態排序、附來源與可能成因的整機報告及文字匯出。",
+            "zh-Hans": "新增按状态排序、附来源与可能成因的整机报告及文字汇出。",
+            "en": "Add system reports and text export sorted by status and including sources and possible causes."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.0.2"
+        }
+      ]
+    },
+    {
+      "id": "status-snapshots",
+      "category": {
+        "zh-Hant": "證據與監控",
+        "zh-Hans": "证据与监控",
+        "en": "Evidence and monitoring"
+      },
+      "title": {
+        "zh-Hant": "有狀態標記的硬體快照",
+        "zh-Hans": "有状态标记的硬体快照",
+        "en": "Hardware snapshots with status markers"
+      },
+      "effect": {
+        "zh-Hant": "快照保留事實的可用狀態、來源與不可用原因；後續擴成六態分類，分開表達未知、不適用、不支援、權限不足與讀取失敗，避免把缺資料補成 0。",
+        "zh-Hans": "快照保留事实的可用状态、来源与不可用原因；后续扩成六态分类，分开表达未知、不适用、不支援、权限不足与读取失败，避免把缺资料补成 0。",
+        "en": "Snapshots retain availability status, source, and reason for unavailability; the classification expands to six states, separately expressing unknown, not applicable, unsupported, insufficient permission, and read failure, avoiding filling missing data with 0."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.1.0",
+          "date": "2026-10-01",
+          "detail": {
+            "zh-Hant": "新增將可用狀態與不可用原因寫入硬體快照的能力。",
+            "zh-Hans": "新增将可用状态与不可用原因写入硬体快照的能力。",
+            "en": "Add the ability to record availability status and reasons for unavailability in hardware snapshots."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.1.0"
+        },
+        {
+          "kind": "expanded",
+          "version": "v2.36",
+          "date": "2026-10-08",
+          "detail": {
+            "zh-Hant": "新增 Unknown 並明確列出六態分類與狀態傳播規則。",
+            "zh-Hans": "新增 Unknown 并明确列出六态分类与状态传播规则。",
+            "en": "Add Unknown and explicitly define the six-state classification and status-propagation rules."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.36"
+        }
+      ]
+    },
+    {
+      "id": "monitoring-analytics",
+      "category": {
+        "zh-Hant": "證據與監控",
+        "zh-Hans": "证据与监控",
+        "en": "Evidence and monitoring"
+      },
+      "title": {
+        "zh-Hant": "歷史趨勢統計與感測器儀表板",
+        "zh-Hans": "历史趋势统计与感测器仪表板",
+        "en": "Historical trend analytics and sensor dashboards"
+      },
+      "effect": {
+        "zh-Hant": "以趨勢、突變與相關性工具檢視歷史感測資料，並提供熱圖、日曆圖與 SPC 等儀表板視圖；統計監看不是硬體規格判定或因果證明。",
+        "zh-Hans": "以趋势、突变与相关性工具检视历史感测资料，并提供热图、日历图与 SPC 等仪表板视图；统计监看不是硬体规格判定或因果证明。",
+        "en": "Use trend, change-point, and correlation tools to inspect historical sensor data, with heat maps, calendar charts, and SPC views; statistical monitoring is not a hardware-specification judgment or proof of causality."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.29",
+          "date": "2026-10-08",
+          "detail": {
+            "zh-Hant": "新增 Theil–Sen 趨勢、CUSUM 突變與 Pearson 前後半比較。",
+            "zh-Hans": "新增 Theil–Sen 趋势、CUSUM 突变与 Pearson 前后半比较。",
+            "en": "Add Theil–Sen trends, CUSUM change detection, and Pearson before/after-half comparisons."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.29"
+        },
+        {
+          "kind": "fixed",
+          "version": "v2.43",
+          "date": "2026-10-09",
+          "detail": {
+            "zh-Hant": "修正核心熱區圖的核心編號與缺測位置；無讀值時留白，不顯示為 0。",
+            "zh-Hans": "修正核心热区图的核心编号与缺测位置；无读值时留白，不显示为 0。",
+            "en": "Fix core numbering and missing-data positions in the core heat map; leave unread values blank instead of showing 0."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.43"
+        },
+        {
+          "kind": "added",
+          "version": "v2.90",
+          "date": "2026-10-26",
+          "detail": {
+            "zh-Hant": "新增感測器儀表板與多種核心／時間視覺化。",
+            "zh-Hans": "新增感测器仪表板与多种核心／时间视觉化。",
+            "en": "Add sensor dashboards and multiple core/time visualizations."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.90"
+        },
+        {
+          "kind": "fixed",
+          "version": "v3.03",
+          "date": "2026-10-28",
+          "detail": {
+            "zh-Hant": "修復儀表板無法進入的問題；歷史倉讀不到時仍顯示頁面並說明原因。",
+            "zh-Hans": "修复仪表板无法进入的问题；历史仓读不到时仍显示页面并说明原因。",
+            "en": "Fix the dashboard failing to open; show the page and explain the reason even when the history store cannot be read."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.03"
+        }
+      ]
+    },
+    {
+      "id": "audit-verification",
+      "category": {
+        "zh-Hant": "證據與監控",
+        "zh-Hans": "证据与监控",
+        "en": "Evidence and monitoring"
+      },
+      "title": {
+        "zh-Hant": "App 外審計日誌雜湊鏈驗證",
+        "zh-Hans": "App 外审计日志杂凑链验证",
+        "en": "External audit-log hash-chain verification"
+      },
+      "effect": {
+        "zh-Hant": "可由命令列逐筆重算審計日誌雜湊鏈，回報檔案存在、鏈是否完整、檢查筆數與斷點原因；日誌不存在不會被當成驗證通過。",
+        "zh-Hans": "可由命令列逐笔重算审计日志杂凑链，回报档案存在、链是否完整、检查笔数与断点原因；日志不存在不会被当成验证通过。",
+        "en": "Recompute the audit-log hash chain entry by entry from the command line and report file existence, chain completeness, record count, and break reason; a missing log is not verification success."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.48",
+          "date": "2026-10-09",
+          "detail": {
+            "zh-Hant": "新增 --verify-audit 命令列驗證能力與明確的結果狀態。",
+            "zh-Hans": "新增 --verify-audit 命令列验证能力与明确的结果状态。",
+            "en": "Add --verify-audit command-line verification and explicit result states."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.48"
+        }
+      ]
+    },
+    {
+      "id": "ai-diagnostics",
+      "category": {
+        "zh-Hant": "桌面工作流",
+        "zh-Hans": "桌面工作流",
+        "en": "Desktop workflow"
+      },
+      "title": {
+        "zh-Hant": "AI 診斷代理與本機唯讀工具",
+        "zh-Hans": "AI 诊断代理与本机唯读工具",
+        "en": "AI diagnostic agent and local read-only tools"
+      },
+      "effect": {
+        "zh-Hant": "診斷代理可呼叫本機唯讀工具、保存對話，並可依警示啟動診斷；後續提供中止控制與更多診斷工具。未量測的項目會指向對應頁面，不以推估數字代替。",
+        "zh-Hans": "诊断代理可呼叫本机唯读工具、保存对话，并可依警示启动诊断；后续提供中止控制与更多诊断工具。未量测的项目会指向对应页面，不以推估数字代替。",
+        "en": "The diagnostic agent can call local read-only tools, save conversations, and start diagnostics from alerts; abort controls and more tools follow. Unmeasured items point to the relevant page rather than estimated numbers."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v1.3.2",
+          "date": "2026-08-29",
+          "detail": {
+            "zh-Hant": "新增診斷代理呼叫本機唯讀工具、保存對話及警示觸發診斷的流程。",
+            "zh-Hans": "新增诊断代理呼叫本机唯读工具、保存对话及警示触发诊断的流程。",
+            "en": "Add workflows for the diagnostic agent to call local read-only tools, save conversations, and trigger diagnostics from alerts."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.3.2"
+        },
+        {
+          "kind": "fixed",
+          "version": "v1.5.1",
+          "date": "2026-08-30",
+          "detail": {
+            "zh-Hant": "修正串流退回誤判、長回覆卡頓與同輪同名工具呼叫結果錯配。",
+            "zh-Hans": "修正串流退回误判、长回复卡顿与同轮同名工具呼叫结果错配。",
+            "en": "Fix false stream-fallback detection, long-response stalls, and mismatched same-name tool-call results in one turn."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.5.1"
+        }
+      ]
+    },
+    {
+      "id": "embedded-browser",
+      "category": {
+        "zh-Hant": "桌面工作流",
+        "zh-Hans": "桌面工作流",
+        "en": "Desktop workflow"
+      },
+      "title": {
+        "zh-Hant": "WebView2 內建瀏覽器",
+        "zh-Hans": "WebView2 内建浏览器",
+        "en": "Built-in WebView2 browser"
+      },
+      "effect": {
+        "zh-Hant": "在桌面程式內提供首頁、導覽與頁面瀏覽；發布記錄也明確追蹤主題顯示及首頁導覽故障的修復。",
+        "zh-Hans": "在桌面程式内提供首页、导览与页面浏览；发布记录也明确追踪主题显示及首页导览故障的修复。",
+        "en": "Provide a home page, navigation, and page browsing within the desktop application; release records explicitly track fixes for theme rendering and home-page navigation failures."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v1.3.0",
+          "date": "2026-08-27",
+          "detail": {
+            "zh-Hant": "新增 WebView2 內嵌瀏覽器，整合首頁與導覽。",
+            "zh-Hans": "新增 WebView2 内嵌浏览器，整合首页与导览。",
+            "en": "Add an embedded WebView2 browser integrating the home page and navigation."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.3.0"
+        },
+        {
+          "kind": "fixed",
+          "version": "v1.8.2",
+          "date": "2026-09-02",
+          "detail": {
+            "zh-Hant": "修正淺色主題下網址列與瀏覽器承載區不可見。",
+            "zh-Hans": "修正浅色主题下网址列与浏览器承载区不可见。",
+            "en": "Fix the address bar and browser host area being invisible under the light theme."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v1.8.2"
+        },
+        {
+          "kind": "fixed",
+          "version": "v3.03",
+          "date": "2026-10-28",
+          "detail": {
+            "zh-Hant": "修復內建瀏覽器首頁與導航。",
+            "zh-Hans": "修复内建浏览器首页与导航。",
+            "en": "Fix the built-in browser home page and navigation."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.03"
+        }
+      ]
+    },
+    {
+      "id": "anonymous-export",
+      "category": {
+        "zh-Hant": "桌面工作流",
+        "zh-Hans": "桌面工作流",
+        "en": "Desktop workflow"
+      },
+      "title": {
+        "zh-Hant": "匿名硬體識別與匯出往返驗證",
+        "zh-Hans": "匿名硬体识别与汇出往返验证",
+        "en": "Anonymous hardware identification and export round-trip verification"
+      },
+      "effect": {
+        "zh-Hant": "以正規化硬體描述雜湊產生穩定匿名 ID，不讀序號、UUID、產品金鑰或路徑；可在記憶體中驗證 JSON 匯出／匯入往返，不必寫出檔案。",
+        "zh-Hans": "以正规化硬体描述杂凑产生稳定匿名 ID，不读序号、UUID、产品金钥或路径；可在记忆体中验证 JSON 汇出／汇入往返，不必写出档案。",
+        "en": "Generate a stable anonymous ID by hashing normalized hardware descriptions without reading serial numbers, UUIDs, product keys, or paths; verify a JSON export/import round trip in memory without writing a file."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v2.73",
+          "date": "2026-10-13",
+          "detail": {
+            "zh-Hant": "新增匿名 ID 穩定性與匯出／匯入往返驗證相關事實。",
+            "zh-Hans": "新增匿名 ID 稳定性与汇出／汇入往返验证相关事实。",
+            "en": "Add facts related to anonymous-ID stability and export/import round-trip verification."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v2.73"
+        }
+      ]
+    },
+    {
+      "id": "measurement-quality-observability",
+      "category": {
+        "zh-Hant": "證據與監控",
+        "zh-Hans": "证据与监控",
+        "en": "Evidence and monitoring"
+      },
+      "title": {
+        "zh-Hant": "量測新鮮度、耗時與重複性",
+        "zh-Hans": "测量新鲜度、耗时与重复性",
+        "en": "Measurement freshness, timing, and repeatability"
+      },
+      "effect": {
+        "zh-Hant": "報告新增量測時間跨度、超過 5 秒落後的資料域、收集步驟耗時與重複讀取範圍；也明示由驅動決定的精度不給臆測誤差上限。同型號本機基線只用已儲存快照，樣本不足時不給 z 分數。",
+        "zh-Hans": "报告新增测量时间跨度、落后最新时刻超过 5 秒的数据域、收集步骤耗时与重复读取范围；也明确驱动决定的精度不臆测误差上限。同型号本机基线只使用已保存快照，样本不足时不提供 z 分数。",
+        "en": "Reports now show measurement time span, domains more than five seconds behind, collection-step timing, and repeated-read ranges. Driver-controlled accuracy is not given invented error bounds. Same-model local baselines use saved snapshots and withhold z-scores when samples are too few."
+      },
+      "events": [
+        {
+          "kind": "expanded",
+          "version": "v3.04",
+          "date": "2026-10-30",
+          "detail": {
+            "zh-Hant": "新增新鮮度／收集耗時／重複讀取摘要與本機型號基線；不把未知精度轉成分數或假誤差上限。",
+            "zh-Hans": "新增新鲜度／收集耗时／重复读取摘要与本机型号基线；不把未知精度转成分数或虚构误差上限。",
+            "en": "Add freshness, collection timing, repeated-read summaries, and a local model baseline—without turning unknown accuracy into scores or invented error bounds."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.04"
+        }
+      ]
+    },
+    {
+      "id": "read-only-fact-expansion",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬件资料与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "裝置診斷、安全狀態與唯讀事實擴充",
+        "zh-Hans": "设备诊断、安全状态与只读事实扩展",
+        "en": "Expanded device diagnostics, security states, and read-only facts"
+      },
+      "effect": {
+        "zh-Hant": "裝置診斷進入事實／報告／CLI；新增裝置樹、Secure Boot 金鑰鏈、拆分電池健康、Credential Guard／VBS 狀態，以及 BCD、PCIe、NTFS、USB、ACPI、WHEA、xHCI 原始值與 NVMe Identify 等資料面。發布說明明確指出沒有新增硬體寫入通路。",
+        "zh-Hans": "设备诊断进入事实／报告／CLI；新增设备树、Secure Boot 密钥链、拆分电池健康、Credential Guard／VBS 状态，以及 BCD、PCIe、NTFS、USB、ACPI、WHEA、xHCI 原始值与 NVMe Identify 等数据面。发布说明明确指出没有新增硬件写入通道。",
+        "en": "Device diagnostics now appear in facts, reports, and CLI output. Read-only additions cover the device tree, Secure Boot key chain, separate battery-health facts, Credential Guard/VBS, and BCD, PCIe, NTFS, USB, ACPI, WHEA, raw xHCI values, and NVMe Identify. The release notes say no hardware-write path was added."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v3.04",
+          "date": "2026-10-30",
+          "detail": {
+            "zh-Hant": "擴充唯讀診斷與資料來源；沒有新增硬體寫入通路。",
+            "zh-Hans": "扩展只读诊断与数据来源；没有新增硬件写入通道。",
+            "en": "Expand read-only diagnostics and data sources; no hardware-write path was added."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.04"
+        }
+      ]
+    },
+    {
+      "id": "shipped-defect-corrections",
+      "category": {
+        "zh-Hant": "穩定性與修正",
+        "zh-Hans": "稳定性与修复",
+        "en": "Reliability and fixes"
+      },
+      "title": {
+        "zh-Hant": "修正已出貨的讀值與穩定性缺陷",
+        "zh-Hans": "修复已发布版本中的读值与稳定性缺陷",
+        "en": "Fix shipped reading and reliability defects"
+      },
+      "effect": {
+        "zh-Hant": "v3.04 修正 NVMe 溫度門檻位移、USB 根集線器埠數與描述元處理、子行程逾時死鎖、並行原子寫入暫存檔名、歷史資料尾端損毀，以及外部報告超過 64 MiB 時的回報方式。",
+        "zh-Hans": "v3.04 修复 NVMe 温度门槛位移、USB 根集线器端口数与描述符处理、子进程超时死锁、并行原子写入临时文件名、历史数据尾端损坏，以及外部报告超过 64 MiB 时的反馈方式。",
+        "en": "v3.04 corrects the NVMe temperature-threshold offset, USB root-hub port/descriptor handling, a child-process timeout deadlock, a concurrent atomic-write temp-name race, history-store tail corruption, and reporting for external reports over 64 MiB."
+      },
+      "events": [
+        {
+          "kind": "fixed",
+          "version": "v3.04",
+          "date": "2026-10-30",
+          "detail": {
+            "zh-Hant": "修正 NVMe、USB、子行程逾時、原子寫入、歷史儲存與大型外部報告處理。",
+            "zh-Hans": "修复 NVMe、USB、子进程超时、原子写入、历史存储与大型外部报告处理。",
+            "en": "Fixes cover NVMe, USB, process timeouts, atomic writes, history storage, and oversized external reports."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.04"
+        }
+      ]
+    },
+    {
+      "id": "official-site-entry-points",
+      "category": {
+        "zh-Hant": "桌面工作流",
+        "zh-Hans": "桌面工作流",
+        "en": "Desktop workflow"
+      },
+      "title": {
+        "zh-Hant": "官方網站入口與產品導覽",
+        "zh-Hans": "官方网站入口与产品导航",
+        "en": "Official-site entry points and product navigation"
+      },
+      "effect": {
+        "zh-Hant": "v3.05 在桌面程式「關於」頁、內建瀏覽器首頁與正體中文／簡體中文／英文 README 加入官方網站入口；網站本身只提供產品說明，不會掃描電腦。",
+        "zh-Hans": "v3.05 在桌面程序“关于”页、内置浏览器首页与繁体中文／简体中文／英文 README 加入官方网站入口；网站本身只提供产品说明，不会扫描电脑。",
+        "en": "v3.05 adds the official-site entry point to the app’s About page, built-in browser home, and Traditional Chinese, Simplified Chinese, and English READMEs. The site remains informational and does not scan a computer."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v3.05",
+          "date": "2026-10-30",
+          "detail": {
+            "zh-Hant": "在「關於」頁、內建瀏覽器首頁與三份 README 加入官方網站連結。",
+            "zh-Hans": "在“关于”页、内置浏览器首页与三份 README 加入官方网站链接。",
+            "en": "Add the official website link to About, the built-in browser home, and all three READMEs."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.05"
+        }
+      ]
+    },
+    {
+      "id": "cpu-network-telemetry-corrections",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬件数据与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "CPU 微架構、核心與網卡狀態",
+        "zh-Hans": "CPU 微架构、核心与网卡状态",
+        "en": "CPU microarchitecture, core, and network-adapter status"
+      },
+      "effect": {
+        "zh-Hant": "v3.10 同步總覽摘要並加入 CPU 微架構辨識與深層核心存取狀態；另修正網卡 WMI 欄位、Wi‑Fi 類型、目前速度標籤及逐核熱圖對位，並補齊安全評分權重。實際可讀性仍受硬體、驅動與權限影響。",
+        "zh-Hans": "v3.10 同步总览摘要并加入 CPU 微架构识别与深层核心访问状态；另修正网卡 WMI 字段、Wi‑Fi 类型、当前速度标签及逐核热图对位，并补齐安全评分权重。实际可读性仍受硬件、驱动与权限影响。",
+        "en": "v3.10 synchronized the overview summary and added CPU microarchitecture recognition and deep-core access status. It also corrected NIC WMI fields, Wi-Fi type, current-speed labeling, per-core heatmap mapping, and security-score weights. Readability still depends on hardware, drivers, and privileges."
+      },
+      "events": [
+        {
+          "kind": "expanded",
+          "version": "v3.10",
+          "date": "2026-10-31",
+          "detail": {
+            "zh-Hant": "總覽摘要同步加入 CPU 微架構辨識與深層核心存取狀態。",
+            "zh-Hans": "总览摘要同步加入 CPU 微架构识别与深层核心访问状态。",
+            "en": "Synchronize the overview summary and add CPU microarchitecture recognition and deep-core access status."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.10"
+        },
+        {
+          "kind": "fixed",
+          "version": "v3.10",
+          "date": "2026-10-31",
+          "detail": {
+            "zh-Hant": "修正網卡 WMI 欄位、Wi‑Fi 類型、目前速度標示、核心熱圖對位與安全評分權重。",
+            "zh-Hans": "修正网卡 WMI 字段、Wi‑Fi 类型、当前速度标注、核心热图对位与安全评分权重。",
+            "en": "Correct NIC WMI fields, Wi-Fi type, current-speed labeling, core heatmap mapping, and security-score weights."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.10"
+        }
+      ]
+    },
+    {
+      "id": "historical-hardware-catalog",
+      "category": {
+        "zh-Hant": "硬體資料與讀值",
+        "zh-Hans": "硬件数据与读值",
+        "en": "Hardware data and readings"
+      },
+      "title": {
+        "zh-Hant": "可選的 CPU／GPU 歷史型號目錄",
+        "zh-Hans": "可选的 CPU／GPU 历史型号目录",
+        "en": "Optional historical CPU/GPU model catalog"
+      },
+      "effect": {
+        "zh-Hant": "使用者可匯入已確認權利的 CPU／GPU JSON 索引；查詢結果標示來源、證據等級與限制，且與本機即時量測分開。程式不內建或散布 workbook 衍生資料，也不包含 NC 主機板資料。",
+        "zh-Hans": "用户可导入已确认权利的 CPU／GPU JSON 索引；查询结果标注来源、证据等级与限制，且与本机实时测量分开。程序不内置或散布 workbook 衍生数据，也不包含 NC 主板数据。",
+        "en": "Users may import CPU/GPU JSON indexes whose usage rights are confirmed. Results identify their source, evidence level, and limits, separately from local live measurements. The app does not bundle workbook-derived data or NC motherboard data."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v3.12",
+          "date": "2026-11-01",
+          "detail": {
+            "zh-Hant": "新增可選歷史型號工具頁，匯入有權使用的 CPU／GPU JSON 索引；標示來源、證據等級與限制，並與本機量測分開。",
+            "zh-Hans": "新增可选历史型号工具页，导入有权使用的 CPU／GPU JSON 索引；标注来源、证据等级与限制，并与本机测量分开。",
+            "en": "Add an optional historical-model page for user-imported CPU/GPU JSON indexes with confirmed rights; label source, evidence level, and limits, separately from local readings."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.12"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+/* XinSpect readability update: small interface text +1px, 2026-10-29. */
+/* XinSpect acrylic layer — load after styles.css, hardware.css and motion.css. */
+:root {
+  --acrylic-tint: rgba(255, 255, 255, .72);
+  --acrylic-tint-strong: rgba(255, 255, 255, .84);
+  --acrylic-highlight: rgba(255, 255, 255, .7);
+  --acrylic-shadow: 0 12px 30px rgba(25, 32, 38, .08), 0 2px 7px rgba(25, 32, 38, .05);
+  --acrylic-shadow-hover: 0 16px 34px rgba(25, 32, 38, .12), 0 3px 9px rgba(25, 32, 38, .07);
+  --acrylic-radius: 14px;
+}
+
+:root[data-theme="dark"] {
+  --acrylic-tint: rgba(28, 35, 40, .78);
+  --acrylic-tint-strong: rgba(33, 42, 48, .88);
+  --acrylic-highlight: rgba(255, 255, 255, .1);
+  --acrylic-shadow: 0 14px 34px rgba(0, 0, 0, .25), 0 2px 8px rgba(0, 0, 0, .16);
+  --acrylic-shadow-hover: 0 18px 38px rgba(0, 0, 0, .32), 0 3px 10px rgba(0, 0, 0, .2);
+}
+
+/* Solid fallbacks remain legible when blur and color-mix are unavailable. */
+.sidebar,
+.topbar {
+  background: var(--surface);
+}
+
+.sidebar {
+  box-shadow: 5px 0 22px rgba(25, 32, 38, .035);
+}
+
+.topbar {
+  box-shadow: 0 1px 0 var(--line), 0 6px 20px rgba(25, 32, 38, .035);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .sidebar {
+    background: var(--acrylic-tint);
+    -webkit-backdrop-filter: blur(18px) saturate(1.08);
+    backdrop-filter: blur(18px) saturate(1.08);
+  }
+
+  .topbar {
+    background: color-mix(in srgb, var(--page) 78%, transparent);
+    -webkit-backdrop-filter: blur(18px) saturate(1.12);
+    backdrop-filter: blur(18px) saturate(1.12);
+  }
+}
+
+/* Quiet highlight and depth: containers stay mostly opaque rather than becoming glass. */
+.metric-card,
+.feature-card,
+.source-list,
+.status-panel,
+.trust-panel,
+.evidence-card,
+.privacy-card,
+.truth-banner,
+.monitoring-strip {
+  box-shadow: var(--acrylic-shadow);
+}
+
+.metric-card::after,
+.feature-card::after,
+.evidence-card::after,
+.privacy-card::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--acrylic-highlight);
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+}
+
+.metric-card,
+.feature-card,
+.evidence-card,
+.privacy-card {
+  background: linear-gradient(145deg, var(--acrylic-tint-strong), var(--surface) 42%, var(--surface-soft));
+}
+
+.source-list,
+.status-panel,
+.trust-panel,
+.truth-banner,
+.monitoring-strip {
+  background: linear-gradient(145deg, var(--acrylic-tint-strong), var(--surface));
+}
+
+.metric-card:hover,
+.feature-card:hover,
+.evidence-card:hover,
+.status-panel:hover,
+.trust-panel:hover,
+.privacy-card:hover {
+  box-shadow: var(--acrylic-shadow-hover);
+}
+
+/* Keep the board study and board-map deterministic; only its outer frame gets depth. */
+.hardware-study {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, .13), inset 0 1px 0 rgba(255, 255, 255, .55);
+}
+
+.hero-card,
+.download-card {
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+
+/* Physical-feeling controls without exaggerated skeuomorphism. */
+.button,
+.icon-button,
+.top-github,
+.sidebar-github,
+.board-control {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .36) inset, 0 2px 4px rgba(25, 32, 38, .06);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+}
+
+.button:hover,
+.icon-button:hover,
+.top-github:hover,
+.sidebar-github:hover,
+.board-control:hover {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .42) inset, 0 5px 10px rgba(25, 32, 38, .1);
+}
+
+.button:active,
+.icon-button:active,
+.top-github:active,
+.sidebar-github:active,
+.board-control:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 0 rgba(25, 32, 38, 0), 0 1px 2px rgba(25, 32, 38, .12) inset;
+}
+
+/* Improve explanation text selectively; labels and technical annotations retain their scale. */
+.sidebar-note p,
+.section-heading p,
+.truth-banner p,
+.feature-card > p,
+.feature-caveat,
+.source-item p,
+.evidence-heading p,
+.evidence-card p,
+.privacy-copy > p,
+.privacy-points small,
+.download-copy > p,
+.requirements-card > p {
+  font-size: 13px;
+}
+
+.section-heading p,
+.evidence-heading p,
+.privacy-copy > p,
+.download-copy > p {
+  line-height: 1.72;
+}
+
+@media (max-width: 680px) {
+  .sidebar-note p,
+  .section-heading p,
+  .truth-banner p,
+  .feature-card > p,
+  .feature-caveat,
+  .source-item p,
+  .evidence-heading p,
+  .evidence-card p,
+  .privacy-copy > p,
+  .privacy-points small,
+  .download-copy > p,
+  .requirements-card > p {
+    font-size: 13px;
+  }
+
+  .metric-card,
+  .feature-card,
+  .evidence-card,
+  .privacy-card {
+    border-radius: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .icon-button,
+  .top-github,
+  .sidebar-github,
+  .board-control {
+    transition: none;
+  }
+
+  .button:hover,
+  .icon-button:hover,
+  .top-github:hover,
+  .sidebar-github:hover,
+  .board-control:hover,
+  .button:active,
+  .icon-button:active,
+  .top-github:active,
+  .sidebar-github:active,
+  .board-control:active {
+    transform: none;
+  }
+}
+
+/* Anchor the optical highlight to each container. */
+.metric-card, .feature-card, .evidence-card, .privacy-card { position: relative; }
+/* Retain the intentionally dark evidence lead card. */
+.evidence-card-main { background: linear-gradient(145deg,#263d46,#182b33); }
+
+/* Hosting transparency is separate from provider certification or product claims. */
+.footer { display: block; }
+.footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; width: 100%; }
+.legal-notice { width: 100%; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); }
+.legal-notice h2 { margin: 0 0 10px; color: var(--ink); font-size: 15px; font-weight: 650; letter-spacing: .01em; }
+.legal-notice p { max-width: 1100px; margin: 8px 0; font-size: 13px; line-height: 1.85; }
+.legal-links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 14px; }
+.legal-notice .legal-links a { color: var(--blue); font-size: 12px; line-height: 1.8; text-decoration: underline; text-underline-offset: 3px; }
+.legal-notice a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+@media(max-width:600px) { .footer-row { align-items: flex-start; flex-direction: column; gap: 13px; } .legal-notice { margin-top: 20px; padding-top: 20px; } .legal-notice p { font-size: 13px; line-height: 1.9; } }
+
+.neutrality-notice { margin-top:22px; padding:14px 17px; border:1px solid var(--line); border-radius:9px; background:var(--surface-soft); }
+.neutrality-notice h2 { margin:0 0 5px; color:var(--ink); font-size:13px; font-weight:650; }
+.neutrality-notice p { margin:0; font-size:13px; line-height:1.85; color:var(--muted); }

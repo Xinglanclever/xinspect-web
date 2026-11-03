@@ -1,0 +1,43 @@
+/* XinSpect readability update: small interface text +1px, 2026-10-29. */
+/* A legible, deterministic board study replaces the generated hardware image. */
+.hero-card { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(320px,.9fr); gap: 24px; padding: 30px; min-height: 500px; background: #102039; align-items: center; }
+.hero-content { width: auto; padding: 16px 0 18px 7px; }
+.hero-content h1 { font-size: clamp(29px,3.2vw,45px); letter-spacing: -.055em; line-height: 1.26; margin-top: 22px; }
+.hero-content > p { font-size: 13px; max-width: 530px; }
+.hero-actions { gap: 15px; }
+.hero-principle { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; border-top: 1px solid #ffffff26; margin-top: 28px; padding-top: 13px; color: #b8c9e0; font-size: 11px; }
+.hero-principle strong { color: #edf4ff; font-weight: 600; }
+.hardware-study { align-self: stretch; margin: 0; padding: 17px 17px 13px; background: #edf3fc; color: #243e61; border: 1px solid #c2d0e4; border-radius: 5px; box-shadow: 0 14px 30px #0002; min-width: 0; }
+.hardware-study-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 9px; letter-spacing: .12em; }
+.hardware-study-header strong { font-size: 10px; letter-spacing: .13em; }
+.hardware-study-header span { color: #687e9b; }
+.board-map { display: block; width: 100%; height: auto; max-height: 354px; margin: 7px auto 1px; }
+.board-label { font-family: Helvetica,Arial,sans-serif; font-size: 10px; fill: #294667; letter-spacing: .1px; font-weight: 700; }
+.board-region-halo { fill: transparent; stroke: transparent; stroke-width: 1.5; transition: fill .25s ease, stroke .25s ease; }
+.board-region.is-selected .board-region-halo { fill: #2864bd1c; stroke: #2864bd; }
+.board-region.is-selected .board-label { fill: #174681; }
+.board-controls { display: flex; gap: 5px; flex-wrap: wrap; margin: 1px 0 10px; }
+.board-control { appearance: none; border: 1px solid #c4d0e3; background: transparent; color: #4a6488; padding: 5px 7px; min-height: 30px; border-radius: 3px; font: 600 9px/1.3 Arial,sans-serif; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+.board-control:hover { border-color: #7895b6; transform: translateY(-1px); }
+.board-control[aria-pressed="true"] { color: #f5f8ff; background: #234977; border-color: #234977; }
+.board-control:focus-visible { outline: 2px solid #2864bd; outline-offset: 3px; }
+.board-detail { border-top: 1px solid #c5d2e5; padding-top: 10px; min-height: 88px; }
+.board-detail-title { margin: 0; font-size: 12px; font-weight: 750; }
+.board-detail p { margin: 5px 0 0; font-size: 11px; line-height: 1.65; color: #526b8d; }
+.board-detail a { display: inline-flex; gap: 5px; align-items: center; margin-top: 6px; color: #174681; font-size: 10px; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
+.board-detail.is-changing { animation: board-detail-in .28s ease both; }
+.hardware-study figcaption { margin-top: 8px; font-size: 9px; line-height: 1.6; color: #697e9c; }
+.board-reference { color: #4e6d91; text-decoration: underline; text-underline-offset: 2px; }
+.board-reference:hover { color: #174681; }
+.feature-card:target { border-color: var(--brand-blue); box-shadow: 0 0 0 3px color-mix(in srgb,var(--brand-blue) 14%,transparent); }
+.feature-card[id] { scroll-margin-top: 100px; }
+@keyframes board-detail-in { from { opacity: .45; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (min-width:1600px) { .hero-card { padding: 36px; gap: 35px; } .hero-content h1 { font-size: 47px; } }
+@media (max-width:1120px) and (min-width:901px) { .hero-card { padding: 24px; gap: 18px; grid-template-columns: minmax(0,1fr) minmax(290px,.9fr); } .hero-content { padding-left: 0; } .hero-content h1 { font-size: 31px; } .hero-content > p { font-size: 12px; } .hero-actions { align-items: flex-start; flex-direction: column; gap: 12px; } .hardware-study { padding: 13px; } }
+@media (max-width:900px) { .hero-card { grid-template-columns: minmax(0,1fr) minmax(300px,.9fr); padding: 25px; gap: 20px; } .hero-content { padding: 10px 0; } .hero-content h1 { font-size: 34px; } }
+@media (max-width:740px) { .hero-card { grid-template-columns: 1fr; gap: 24px; padding: 28px 22px 22px; align-items: start; } .hero-content { padding: 0; } .hero-content h1 { font-size: clamp(30px,6.8vw,43px); margin-top: 16px; } .hero-content > p { font-size: 13px; } .hero-principle { margin-top: 22px; } .hardware-study { width: 100%; max-width: 480px; justify-self: center; } .board-map { max-height: 360px; } .board-detail { min-height: 76px; } }
+@media (max-width:380px) { .hero-card { padding: 23px 17px 17px; } .hero-content h1 { font-size: 29px; } .hardware-study { padding: 12px; } .board-control { padding: 5px 6px; } }
+@media (prefers-reduced-motion: reduce) { .board-region-halo,.board-control { transition: none; } .board-control:hover { transform: none; } .board-detail.is-changing { animation: none; } }
+
+.visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.board-detail a[hidden] { display:none; }

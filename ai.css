@@ -1,0 +1,31 @@
+/* XinSpect readability update: small interface text +1px, 2026-10-29. */
+/* XinSpect-Ai is a status notice, not an available AI service. */
+.nav-icon-ai { font-size: 12px; font-weight: 750; letter-spacing: -.04em; }
+.hero-ai-entry { display: grid; gap: 3px; width: min(100%, 350px); margin-top: 19px; padding: 11px 14px; border: 1px solid rgba(171,198,239, .43); border-radius: 9px; background: rgba(255, 255, 255, .035); color: #eff5fc; transition: background .18s ease, border-color .18s ease; }
+.hero-ai-entry:hover { border-color: #abc7ed; background: rgba(255, 255, 255, .075); }
+.hero-ai-entry:focus-visible { outline: 2px solid #aac5e9; outline-offset: 4px; }
+.hero-ai-label { display: flex; justify-content: space-between; align-items: center; gap: 15px; font-size: 14px; line-height: 1.4; }
+.hero-ai-label strong { font-weight: 650; letter-spacing: -.015em; }
+.hero-ai-label > span { color: #abc7ed; font-size: 17px; }
+.hero-ai-entry small { color: #abc7ed; font-size: 11px; line-height: 1.6; }
+.ai-section { padding-top: 30px; }
+.ai-status-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 24px; padding: 24px 27px; border: 1px solid var(--line); border-left: 3px solid var(--amber); border-radius: 12px; background: var(--surface); }
+.ai-status-card .section-kicker { color: var(--muted); font-size: 10px; }
+.ai-status-card h2 { margin: 0; color: var(--ink); font-size: 27px; line-height: 1.2; letter-spacing: -.04em; }
+.ai-status-line { display: flex; flex-wrap: wrap; gap: 3px; margin: 11px 0 0; color: var(--amber); font-size: 13px; line-height: 1.5; }
+.ai-status-line strong { font-weight: 700; }
+.ai-status-intro { max-width: 760px; margin: 10px 0 0; color: var(--ink); font-size: 13px; line-height: 1.7; }
+.ai-status-note { max-width: 760px; margin: 5px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.ai-status-card .ai-repo-link { margin-top: 9px; }
+.ai-state-mark { display: grid; width: 70px; height: 70px; place-items: center; border: 1px solid var(--line); border-radius: 15px; background: var(--surface-soft); color: var(--amber); font-size: 28px; font-weight: 650; letter-spacing: -.06em; }
+@media (max-width: 680px) {
+  .ai-status-card { padding: 21px 19px; gap: 15px; }
+  .ai-state-mark { width: 48px; height: 48px; border-radius: 11px; font-size: 21px; align-self: start; }
+  .ai-status-card h2 { font-size: 24px; }
+  .ai-status-intro, .ai-status-note { font-size: 12px; }
+}
+@media (max-width: 380px) {
+  .ai-status-card { grid-template-columns: minmax(0, 1fr); }
+  .ai-state-mark { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-ai-entry { transition: none; } }
