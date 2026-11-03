@@ -2,6 +2,192 @@
   "date_basis": "GitHub Release published_at (UTC)",
   "items": [
     {
+      "id": "compliance-evidence-exports-v314",
+      "category": {
+        "zh-Hant": "合規與證據匯出",
+        "zh-Hans": "合规与证据导出",
+        "en": "Compliance and evidence exports"
+      },
+      "title": {
+        "zh-Hant": "合規對照與結構化證據匯出",
+        "zh-Hans": "合规对照与结构化证据导出",
+        "en": "Compliance mapping and structured evidence exports"
+      },
+      "effect": {
+        "zh-Hant": "--compliance 將既有事實對照 NIST SP 800-147／155／193 與 MITRE ATT&CK；沒有足夠資料時標記 Unverifiable，不當成通過。SARIF 2.1.0、JUnit XML、CEF 與 OTLP/JSON logs 可供下游工具讀取。這是工具輸出，不是第三方認證。",
+        "zh-Hans": "--compliance 将已有事实对照 NIST SP 800-147／155／193 与 MITRE ATT&CK；资料不足时标记 Unverifiable，不算通过。SARIF 2.1.0、JUnit XML、CEF 与 OTLP/JSON logs 可供下游工具读取。这是工具输出，不是第三方认证。",
+        "en": "--compliance maps existing facts to NIST SP 800-147/155/193 and MITRE ATT&CK; insufficient evidence is Unverifiable, not a pass. SARIF 2.1.0, JUnit XML, CEF, and OTLP/JSON logs support downstream tools. These outputs are not third-party certification."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v3.14",
+          "date": "2026-11-03",
+          "detail": {
+            "zh-Hant": "新增合規對照與 SARIF／JUnit／CEF／OTLP 輸出；缺資料維持 Unverifiable。",
+            "zh-Hans": "新增合规对照与 SARIF／JUnit／CEF／OTLP 输出；缺少资料仍为 Unverifiable。",
+            "en": "Add compliance mapping and SARIF/JUnit/CEF/OTLP output; missing evidence remains Unverifiable."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.14"
+        }
+      ]
+    },
+    {
+      "id": "merkle-evidence-fingerprint-v314",
+      "category": {
+        "zh-Hant": "合規與證據匯出",
+        "zh-Hans": "合规与证据导出",
+        "en": "Compliance and evidence exports"
+      },
+      "title": {
+        "zh-Hant": "穩定白名單事實的 SHA-256 Merkle 指紋",
+        "zh-Hans": "稳定白名单事实的 SHA-256 Merkle 指纹",
+        "en": "SHA-256 Merkle fingerprints for allow-listed facts"
+      },
+      "effect": {
+        "zh-Hant": "--merkle 只納入穩定白名單事實，排除敏感、非 Present 與易變鍵；輸出鍵與葉雜湊，不輸出事實值。它可協助比對輸入一致性，但不證明作者身分、來源真實性或硬體正常。",
+        "zh-Hans": "--merkle 只纳入稳定白名单事实，排除敏感、非 Present 与易变键；输出键与叶哈希，不输出事实值。它可协助比较输入一致性，但不证明作者身份、来源真实性或硬件正常。",
+        "en": "--merkle uses only stable allow-listed facts and excludes sensitive, non-Present, and volatile keys. Output contains keys and leaf hashes, not fact values. It helps compare input integrity; it does not prove authorship, source authenticity, or hardware health."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v3.14",
+          "date": "2026-11-03",
+          "detail": {
+            "zh-Hant": "新增穩定白名單事實的 SHA-256 Merkle 樹；排除敏感／非 Present／易變值。",
+            "zh-Hans": "新增稳定白名单事实的 SHA-256 Merkle 树；排除敏感／非 Present／易变值。",
+            "en": "Add a SHA-256 Merkle tree over stable allow-listed facts, excluding sensitive, non-Present, and volatile values."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.14"
+        }
+      ]
+    },
+    {
+      "id": "speculative-facts-isolated-v314",
+      "category": {
+        "zh-Hant": "合規與證據匯出",
+        "zh-Hans": "合规与证据导出",
+        "en": "Compliance and evidence exports"
+      },
+      "title": {
+        "zh-Hant": "七項 infer.* 推測資料明確隔離",
+        "zh-Hans": "七项 infer.* 推测资料明确隔离",
+        "en": "Explicitly isolate seven infer.* speculative entries"
+      },
+      "effect": {
+        "zh-Hant": "--speculation 的七項 infer.* 資料帶有「推測」鍵名前綴與值標籤，並附信心、依據鍵與限制；不進合規判定或 Merkle。它們是有界線的推論，不是量測或合規證據。",
+        "zh-Hans": "--speculation 的七项 infer.* 数据带有“推测”键名前缀与值标签，并附置信度、依据键与限制；不进入合规判断或 Merkle。它们是有边界的推断，不是测量或合规证据。",
+        "en": "Seven infer.* entries from --speculation carry a speculative key prefix and value label, plus confidence, supporting keys, and limits; they are excluded from compliance and Merkle results. They are bounded inferences, not measurements or compliance evidence."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v3.14",
+          "date": "2026-11-03",
+          "detail": {
+            "zh-Hant": "新增七項明確標記的 infer.* 推測值，並由測試守住其與合規／Merkle 的隔離。",
+            "zh-Hans": "新增七项明确标记的 infer.* 推测值，并由测试保证它们与合规／Merkle 隔离。",
+            "en": "Add seven explicitly labeled infer.* speculative values, with tests keeping them separate from compliance and Merkle results."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.14"
+        }
+      ]
+    },
+    {
+      "id": "local-fleet-snapshots-and-compliance-diff-v314",
+      "category": {
+        "zh-Hant": "本機快照與比較",
+        "zh-Hans": "本地快照与比较",
+        "en": "Local snapshots and comparison"
+      },
+      "title": {
+        "zh-Hant": "本機族群基線與合規差異比較",
+        "zh-Hans": "本地族群基线与合规差异比较",
+        "en": "Local fleet baselines and compliance diffs"
+      },
+      "effect": {
+        "zh-Hant": "--fleet 只讀本機快照目錄來彙總同型號基線，不上傳、不跨機傳輸；缺少可比較第二台時回報狀態而不造基線。--compliance-diff 只讀兩份既有 JSON，不重新收集，已滿足／緩解變成其他狀態（含 Unverifiable）會標記退步。",
+        "zh-Hans": "--fleet 只读本地快照目录汇总同型号基线，不上传、不跨机传输；缺少可比较的第二台时报告状态，不伪造基线。--compliance-diff 只读两份已有 JSON，不重新收集；已满足／缓解变为其他状态（含 Unverifiable）会标记为退步。",
+        "en": "--fleet reads a local snapshot directory to summarize same-model baselines; it does not upload or transfer across machines and reports when a second comparable device is missing. --compliance-diff compares two existing JSON files without recollecting data and marks regressions when a satisfied/mitigated state changes, including to Unverifiable."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v3.14",
+          "date": "2026-11-03",
+          "detail": {
+            "zh-Hant": "新增本機快照族群基線與唯讀合規差異比較；不主動連網或跨機上傳。",
+            "zh-Hans": "新增本地快照族群基线与只读合规差异比较；不主动联网或跨机上传。",
+            "en": "Add local snapshot-fleet baselines and read-only compliance diffs; no active network connection or cross-machine upload."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.14"
+        }
+      ]
+    },
+    {
+      "id": "redfish-directory-import-v315",
+      "category": {
+        "zh-Hant": "資料匯入與解析",
+        "zh-Hans": "数据导入与解析",
+        "en": "Data import and parsing"
+      },
+      "title": {
+        "zh-Hant": "由本機 Redfish 匯出目錄產生唯讀摘要",
+        "zh-Hans": "从本地 Redfish 导出目录生成只读摘要",
+        "en": "Create a read-only summary from a local Redfish export"
+      },
+      "effect": {
+        "zh-Hant": "--redfish <directory> 解析使用者已匯出的本機目錄樹；沒有 HTTP client，也不連到 BMC。外部 @odata.id 與路徑穿越會被拒絕。結果是來源資料的摘要，不代表即時遠端設備狀態。",
+        "zh-Hans": "--redfish <directory> 解析用户已导出的本地目录树；没有 HTTP client，也不连接 BMC。外部 @odata.id 与路径穿越会被拒绝。结果是来源数据摘要，不代表实时远程设备状态。",
+        "en": "--redfish <directory> parses a user-provided local export tree; there is no HTTP client and no BMC connection. External @odata.id values and path traversal are rejected. The result summarizes supplied files, not live remote-device state."
+      },
+      "events": [
+        {
+          "kind": "added",
+          "version": "v3.15",
+          "date": "2026-11-03",
+          "detail": {
+            "zh-Hant": "新增 Redfish 本機匯出資料夾解析；限制為唯讀檔案輸入，不主動連線。",
+            "zh-Hans": "新增 Redfish 本地导出文件夹解析；限制为只读文件输入，不主动连接。",
+            "en": "Add parsing for a local Redfish export directory, limited to read-only file input with no active connection."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.15"
+        }
+      ]
+    },
+    {
+      "id": "ui-preference-hud-wmiguard-v315",
+      "category": {
+        "zh-Hant": "穩定性與介面修正",
+        "zh-Hans": "稳定性与界面修复",
+        "en": "Reliability and interface fixes"
+      },
+      "title": {
+        "zh-Hant": "主題偏好復原、迷你 HUD 重建與 WMI 守護穩定性",
+        "zh-Hans": "主题偏好恢复、迷你 HUD 重建与 WMI 守护稳定性",
+        "en": "Recover theme preferences, recreate the mini HUD, and steady WMI guard behavior"
+      },
+      "effect": {
+        "zh-Hant": "損壞的主題偏好回復預設值；迷你 HUD 關閉後可重新建立；WmiGuard 改用專用背景工作執行緒，降低高負載時誤判不可用的情況。這些是可靠性修正，不是新的硬體量測能力。",
+        "zh-Hans": "损坏的主题偏好恢复默认值；迷你 HUD 关闭后可重新创建；WmiGuard 改用专用后台工作线程，降低高负载时误判不可用的情况。这些是可靠性修复，不是新的硬件测量能力。",
+        "en": "Corrupt theme preferences return to defaults; the mini HUD can be recreated after closing; WmiGuard uses a dedicated worker thread to reduce false unavailability under load. These are reliability fixes, not new hardware-measurement capabilities."
+      },
+      "events": [
+        {
+          "kind": "fixed",
+          "version": "v3.15",
+          "date": "2026-11-03",
+          "detail": {
+            "zh-Hant": "修正損壞偏好設定復原、迷你 HUD 關閉後重建及高負載 WMI 可用性問題。",
+            "zh-Hans": "修复损坏偏好设置恢复、迷你 HUD 关闭后重建以及高负载 WMI 可用性问题。",
+            "en": "Fix corrupt preference recovery, mini-HUD recreation after closing, and WMI availability under load."
+          },
+          "url": "https://github.com/Xinglanclever/XinSpect/releases/tag/v3.15"
+        }
+      ]
+    },
+    {
       "id": "surveillance-planning-calculators",
       "category": {
         "zh-Hant": "工程規劃與設計試算",

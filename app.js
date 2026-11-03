@@ -110,7 +110,7 @@
   let featureLoadError = false;
 
   function copy(key) {
-    return COPY[currentLanguage]?.[key] ?? COPY['zh-Hant'][key] ?? key;
+    return globalThis.XinSpectSiteCopy?.[currentLanguage]?.[key] ?? COPY[currentLanguage]?.[key] ?? COPY['zh-Hant'][key] ?? key;
   }
 
   function setTheme(theme) {
@@ -210,7 +210,7 @@
     assign('historyTitle', text.title);
     assign('historyIntro', text.intro);
     assign('allReleasesLabel', text.all);
-    const summaryCount = featureLoaded ? featureItems.length : (featureLoadError ? '—' : 26);
+    const summaryCount = featureLoaded ? featureItems.length : (featureLoadError ? '—' : 35);
     assign('historySummary', `${summaryCount} ${text.summary}`);
     assign('featureSearchLabel', text.search);
     assign('featureSourceNote', text.sourceNote);
