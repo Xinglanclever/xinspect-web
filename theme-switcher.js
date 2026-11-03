@@ -2,14 +2,15 @@
  * Toggles between two design overlays:
  *   dark  — Laboratory glass (gemini-redesign-dark.css)
  *   light — Swiss modernist (gemini-redesign-light.css)
- * Persists the choice in localStorage. */
+ * Persists the choice in localStorage. Button styling comes from each
+ * theme's CSS (#overlay-theme-toggle), so it adapts to the active theme. */
 (function () {
   "use strict";
 
-  var VERSION = "20261104-v2";
+  var VERSION = "20261104-v3";
   var THEMES = {
-    dark: { href: "./gemini-redesign-dark.css?v=" + VERSION, buttonLabel: "\u2600 \u6DFA\u8272", buttonTitle: "\u5207\u63DB\u5230\u745E\u58EB\u73FE\u4EE3\u4E3B\u7FA9\u6DFA\u8272\u4E3B\u984C" },
-    light: { href: "./gemini-redesign-light.css?v=" + VERSION, buttonLabel: "\u263E \u6DF1\u8272", buttonTitle: "\u5207\u63DB\u5230\u5BE6\u9A57\u5BA4\u6DF1\u8272\u4E3B\u984C" }
+    dark: { href: "./gemini-redesign-dark.css?v=" + VERSION, label: "\u2600 \u6DFA\u8272", title: "\u5207\u63DB\u5230\u745E\u58EB\u6DFA\u8272\u4E3B\u984C" },
+    light: { href: "./gemini-redesign-light.css?v=" + VERSION, label: "\u263E \u6DF1\u8272", title: "\u5207\u63DB\u5230\u5BE6\u9A57\u5BA4\u6DF1\u8272\u4E3B\u984C" }
   };
   var KEY = "xinspect-overlay-theme";
   var DEFAULT = "dark";
@@ -27,8 +28,8 @@
     document.documentElement.setAttribute("data-overlay-theme", name);
     var btn = document.getElementById("overlay-theme-toggle");
     if (btn) {
-      btn.textContent = THEMES[name].buttonLabel;
-      btn.title = THEMES[name].buttonTitle;
+      btn.textContent = THEMES[name].label;
+      btn.title = THEMES[name].title;
     }
   }
 
@@ -37,28 +38,36 @@
     var btn = document.createElement("button");
     btn.id = "overlay-theme-toggle";
     btn.type = "button";
+    btn.textContent = "";
+    // 布局交给内联样式，颜色交给各主题 CSS 的 #overlay-theme-toggle 规则
     btn.style.cssText =
-      "position:fixed;top:14px;right:16px;z-index:99999;padding:8px 16px;" +
-      "font:600 13px/1 'Segoe UI',system-ui,sans-serif;color:#fff;background:#111;" +
-      "border:1px solid #fff;border-radius:2px;cursor:pointer;letter-spacing:0.04em;" +
-      "box-shadow:0 2px 8px rgba(0,0,0,.35);transition:background-color .12s,color .12s;";
+      "margin-left:10px;padding:7px 14px;font:600 13px/1 'Segoe UI',system-ui,sans-serif;" +
+      "letter-spacing:0.04em;cursor:pointer;flex-shrink:0;";
     btn.addEventListener("click", function () {
       var next = current() === "dark" ? "light" : "dark";
       try { localStorage.setItem(KEY, next); } catch (e) {}
       apply(next);
     });
-    document.body.appendChild(btn);
+    var bar = document.querySelector(".topbar");
+    if (bar) {
+      bar.appendChild(btn);
+    } else {
+      // 兜底：找不到顶栏就固定在右上角
+      btn.style.cssText += "position:fixed;top:14px;right:16px;z-index:99999;";
+      document.body.appendChild(btn);
+    }
     apply(current());
   }
 
-  // 如果頁面腳本重建了 body 頂層節點，確保按鈕一直在
+  // 若页面脚本重建了顶栏导致按钮丢失，自动补回
   var observer = new MutationObserver(function () {
     if (!document.getElementById("overlay-theme-toggle")) injectButton();
   });
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       injectButton();
-      observer.observe(document.body, { childList: true });
+      observer.observe(document.body, { childList: true, subtree: false });
     });
   } else {
     injectButton();

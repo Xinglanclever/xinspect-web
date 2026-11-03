@@ -852,3 +852,18 @@ body {
   }
 }
 
+
+/* ==========================================================================
+   主題切換按鈕（深色主題下：黑底白框白字，融入頂欄）
+   ========================================================================== */
+#overlay-theme-toggle {
+  background: rgba(18, 28, 52, 0.82) !important;
+  color: #e8f1ff !important;
+  border: 1px solid rgba(140, 180, 255, 0.35) !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+#overlay-theme-toggle:hover {
+  background: rgba(34, 211, 238, 0.15) !important;
+  border-color: #22d3ee !important;
+}

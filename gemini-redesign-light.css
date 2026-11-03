@@ -673,3 +673,177 @@ footer {
     scroll-behavior: auto !important;
   }
 }
+
+/* ==========================================================================
+   SWISS HARDENING — 接管站點原生 CSS 變數系統
+   站點 JS 會設 data-theme="dark"，所有組件走 var(--*) 深色變數。
+   淺色主題直接把變數改寫為瑞士風值，整站瞬間轉白。
+   ========================================================================== */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: light !important;
+  --page: #ffffff !important;
+  --surface: #ffffff !important;
+  --surface-soft: #f7f7f7 !important;
+  --surface-muted: #f0f0f0 !important;
+  --ink: #111111 !important;
+  --muted: #575757 !important;
+  --faint: #8a8a8a !important;
+  --line: #e6e6e6 !important;
+  --line-strong: #111111 !important;
+  --brand-blue: #e2231a !important;
+  --brand-blue-strong: #b81c15 !important;
+  --blue: #e2231a !important;
+  --blue-pale: #fdeceb !important;
+  --green: #111111 !important;
+  --amber: #b81c15 !important;
+  --navy: #111111 !important;
+  --shadow: none !important;
+  --radius: 0px !important;
+  --radius-sm: 0px !important;
+  --radius-lg: 0px !important;
+}
+
+/* 全站元素：壓掉殘留深色底、玻璃、漸層、圓角、陰影 */
+.sidebar, aside,
+main, main section, main article,
+.section-block, .hero-section, .status-panel, .trust-panel,
+.metric-card, .reality-card, .verification-card, .ai-metric,
+.evidence-callout, .board-region, .board-control,
+.neutrality-notice, .legal-notice, .page-footer,
+.feature-top, .section-meta, .section-source, .source-tags,
+.trust-row, .report-field, .report-hint, .doc-links, .reality-links,
+.reality-card-top, .source-item, .doc-links a, .release-updates,
+.history-section, .privacy-section, .download-section, .report-section,
+.support-section, .docs-section, .evidence-section, .catalog,
+.modules, .reconcile-section, .capability-check, .release-updates {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #111111 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-radius: 0 !important;
+}
+
+/* 頂欄：白底黑字黑細線，去毛玻璃 */
+.topbar, header.topbar {
+  background: #ffffff !important;
+  background-image: none !important;
+  border-bottom: 1px solid #111111 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-radius: 0 !important;
+}
+.topbar *, header.topbar * {
+  color: #111111 !important;
+  text-shadow: none !important;
+  background-image: none !important;
+}
+
+/* 大標題：純黑，殺掉漸層文字 */
+h1, h2, h3, .section-heading, .hero-section h1,
+.hero-section h1 span, .hero-section h1 b {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: currentColor !important;
+  color: #111111 !important;
+  text-shadow: none !important;
+}
+
+/* 網格/光暈/光板背景全部移除 */
+body::before, body::after,
+.hero-section::before, .hero-section::after,
+.section-block::before, .section-block::after,
+.topbar::before, .topbar::after,
+[class*="grid"], [class*="glow"], [class*="halo"] {
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* 邊框系統：細黑/灰直角 */
+.metric-card, .reality-card, .verification-card, .ai-metric,
+.evidence-callout, .board-region, .board-control, .status-panel,
+.trust-panel, .verification-card, .source-item, .feature-caveat {
+  border: 1px solid #e6e6e6 !important;
+  border-radius: 0 !important;
+}
+.board-region, .evidence-callout, .neutrality-notice {
+  border-left: 3px solid #e2231a !important;
+}
+
+/* 連結與標籤 */
+.text-link, .metric-value-link, .source-tag-link, .doc-links a,
+.reality-links a, main a:not(.button) {
+  color: #111111 !important;
+  text-decoration: underline !important;
+  text-decoration-color: #111111 !important;
+  text-underline-offset: 2px !important;
+  border-radius: 0 !important;
+  background: none !important;
+}
+.text-link:hover, .metric-value-link:hover, .source-tag-link:hover,
+.doc-links a:hover, main a:not(.button):hover {
+  color: #e2231a !important;
+  text-decoration-color: #e2231a !important;
+}
+.source-tag-link, .tag, [class*="chip"], [class*="badge"] {
+  background: #ffffff !important;
+  border: 1px solid #111111 !important;
+  color: #111111 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 按鈕：瑞士直角 */
+.button, .button.report-primary, .button.report-secondary {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  background-image: none !important;
+  transition: background-color .12s, color .12s, border-color .12s !important;
+}
+.button.report-primary {
+  background: #e2231a !important;
+  color: #ffffff !important;
+  border: 1px solid #e2231a !important;
+}
+.button.report-primary:hover { background: #b81c15 !important; }
+.button.report-secondary {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 1px solid #111111 !important;
+}
+.button.report-secondary:hover { background: #111111 !important; color: #ffffff !important; }
+
+/* 表單與輸入 */
+input, textarea, select {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 1px solid #111111 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 主題切換按鈕（本主題下：白底黑框黑字） */
+#overlay-theme-toggle {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 1px solid #111111 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Hero 標題內的 em 強調：改為瑞士紅（原站為藍色漸變） */
+.hero-section h1 em, h1 em, .hero-section h1 em span {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: #e2231a !important;
+  color: #e2231a !important;
+  font-style: normal !important;
+  text-shadow: none !important;
+}
