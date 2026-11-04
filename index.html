@@ -9,6 +9,16 @@
 <meta content="XinSpect v3.15 — 讓硬體事實有來源" property="og:title"/>
 <meta content="依 XinSpect v3.15 官方發布與原始碼說明功能、資料來源與限制；此網站不會掃描你的電腦。" property="og:description"/>
 <meta content="https://xinspect.de5.net/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="zh_Hant" property="og:locale"/>
+<meta content="https://xinspect.de5.net/assets/xinspect-hardware-sources-web.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="XinSpect — 讓硬體事實有來源" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="XinSpect v3.15 — 讓硬體事實有來源" name="twitter:title"/>
+<meta content="開源 Windows x64 硬體事實工具：硬體／韌體／Windows 三源對帳、證據快照、AGPL v3。本站不掃描你的電腦。" name="twitter:description"/>
+<meta content="https://xinspect.de5.net/assets/xinspect-hardware-sources-web.jpg" name="twitter:image"/>
 <title>XinSpect v3.15 — 讓硬體事實有來源</title>
 <link href="https://xinspect.de5.net/" rel="canonical"/>
 <link href="./assets/xinspect-brand-blue.png" rel="icon" sizes="512x512" type="image/png"/><link href="./assets/xinspect-brand-blue.ico" rel="shortcut icon" type="image/x-icon"/><link href="./assets/xinspect-brand-blue.png" rel="apple-touch-icon" sizes="512x512"/>
@@ -18,12 +28,12 @@
 <link href="./acrylic.css?v=6eee0851d0e3" rel="stylesheet"/>
 <link href="./ai.css?v=b99b6c31273d" rel="stylesheet"/>
 <script defer="" src="./site-overrides.js?v=20261104-v315-review"></script>
-<script defer="" src="./app.js?v=20261104-v315-review"></script>
+<script defer="" src="./app.js?v=20261105-spread1"></script>
 <script defer="" src="./hardware.js?v=724debebc08c"></script>
 <script defer="" src="./motion.js?v=60820fa4d2f4"></script>
 <link href="./report.css?v=3ac5345a984e" rel="stylesheet"/>
 <link href="./sources.css?v=82492d390e14" rel="stylesheet"/>
-<link href="./redesign.css?v=20261104-v315-review" rel="stylesheet"/><link href="./gemini-swiss.css?v=20261105-swiss2" rel="stylesheet"/><script defer="" src="./report-guard.js?v=d0dff8b06f53"></script><script defer="" src="./report.js?v=d7e4bca4e3f2"></script><script defer="" src="./report-cloud.js?v=a94cf97f7e39"></script>
+<link href="./redesign.css?v=20261104-v315-review" rel="stylesheet"/><link href="./gemini-swiss.css?v=20261105-spread1" rel="stylesheet"/><script defer="" src="./report-guard.js?v=d0dff8b06f53"></script><script defer="" src="./report.js?v=d7e4bca4e3f2"></script><script defer="" src="./report-cloud.js?v=a94cf97f7e39"></script>
 <script defer="" src="./sources.js?v=9d42e8600a5b"></script></head>
 <body>
 <a class="skip-link" data-i18n="skip" href="#main">跳至主要內容</a>
@@ -47,7 +57,7 @@
 <a class="nav-link" data-nav-link="" href="#history"><span class="nav-icon">↻</span><span data-i18n="navHistory">版本沿革</span></a>
 <a class="nav-link" data-nav-link="" href="#privacy"><span class="nav-icon">⛨</span><span data-i18n="navPrivacy">隱私與邊界</span></a>
 <a class="nav-link" data-nav-link="" href="#download"><span class="nav-icon">↧</span><span data-i18n="navDownload">下載與需求</span></a>
-<a class="nav-link" data-nav-link="" href="#report"><span aria-hidden="true" class="nav-icon">!</span><span data-report-i18n="navReport">問題回報</span></a><a class="nav-link" data-nav-link="" href="#support"><span aria-hidden="true" class="nav-icon">+</span><span data-report-i18n="navSupport">支援我們</span></a></nav>
+<a class="nav-link" data-nav-link="" href="#report"><span aria-hidden="true" class="nav-icon">!</span><span data-report-i18n="navReport">問題回報</span></a><a class="nav-link" data-nav-link="" href="#spread"><span aria-hidden="true" class="nav-icon">↗</span><span data-i18n="navSpread">分享推廣</span></a><a class="nav-link" data-nav-link="" href="#support"><span aria-hidden="true" class="nav-icon">+</span><span data-report-i18n="navSupport">支援我們</span></a></nav>
 <div class="sidebar-rule"></div>
 <div class="sidebar-note"><span class="note-mark">i</span><p data-i18n="sidebarNote">這是產品介紹網站，<strong>不會讀取這台裝置的硬體數值</strong>。</p></div>
 <div class="sidebar-spacer"></div>
@@ -324,7 +334,15 @@
 </div>
 </div>
 <p class="report-review-limit" data-report-i18n="reviewLimit">這是本機格式與風險靜態檢查，不是防毒、沙箱或真實性認證；無法保證內容安全或資料正確。保守規則可能拒絕含程式碼的正常記錄，請改用移除敏感資訊的最小純文字摘錄，仍需人工審核。</p>
-</section><section aria-labelledby="supportTitle" class="section-block support-section" id="support"><div class="support-card"><svg aria-hidden="true" class="support-star" viewbox="0 0 80 80"><path d="M40 9 49.6 28.5 71 31.6 55.5 46.8 59.2 68.2 40 58.1 20.8 68.2 24.5 46.8 9 31.6 30.4 28.5Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg><div class="support-copy"><div class="section-kicker">SUPPORT OPEN SOURCE</div><h2 data-report-i18n="supportTitle" id="supportTitle">一顆 Star，讓更多人找到 XinSpect。</h2><p data-report-i18n="supportIntro">如果這個開源專案對你有幫助，歡迎到 GitHub 給我們一顆 Star。這是收藏與鼓勵，不涉及付款；本站不會代你操作。</p><a class="button report-primary" href="https://github.com/Xinglanclever/XinSpect" id="supportGitHub" rel="noopener noreferrer" target="_blank"><span data-report-i18n="supportAction">到 GitHub 為 XinSpect 點 Star</span><span aria-hidden="true">↗</span></a><p class="report-hint" data-report-i18n="supportNote">需要 GitHub 帳戶；請在專案頁親自按下 Star。</p></div></div></section><footer class="page-footer"><div class="footer-row"><div class="footer-brand"><img alt="" aria-hidden="true" class="brand-mark small-mark" src="./assets/xinspect-brand-blue.png"/><span><strong>XinSpect「另種可能」</strong><small data-i18n="footerPhrase">讓事實有來源，讓未知保持未知。</small></span></div>
+</section><section aria-labelledby="spreadTitle" class="section-block spread-section" id="spread">
+<div class="section-heading"><div><div class="section-kicker">SPREAD THE WORD · OPEN SOURCE</div><h2 data-i18n="spreadTitle" id="spreadTitle">把 XinSpect 分享給需要它的人</h2><p data-i18n="spreadIntro">XinSpect 免費開源（AGPL v3），資料本機處理。如果你覺得「讓硬體事實有來源」這件事值得存在，歡迎分享給寫程式、裝機、維運或查故障的朋友。</p></div><span class="section-meta" data-i18n="spreadMeta">分享連結不追蹤</span></div>
+<div class="spread-grid">
+<article class="spread-card"><span class="spread-no">01</span><h3 data-i18n="spreadStarTitle">給一顆 Star</h3><p data-i18n="spreadStarBody">GitHub Star 是開源專案最直接的曝光訊號，讓演算法與搜尋更容易把 XinSpect 送到需要的人面前。</p><a class="text-link" href="https://github.com/Xinglanclever/XinSpect" rel="noopener noreferrer" target="_blank">到 GitHub 點 Star <span>↗</span></a></article>
+<article class="spread-card"><span class="spread-no">02</span><h3 data-i18n="spreadShareTitle">分享官網</h3><p data-i18n="spreadShareBody">一鍵複製網址，貼到社群、論壇或群組。網站純靜態、無追蹤器，分享出去不會掃描任何訪客的電腦。</p><button class="text-link spread-copy" data-copy-url="https://xinspect.de5.net/" id="spreadCopyBtn" type="button">複製 https://xinspect.de5.net/ <span>⧉</span></button></article>
+<article class="spread-card"><span class="spread-no">03</span><h3 data-i18n="spreadIssueTitle">回報真實使用情境</h3><p data-i18n="spreadIssueBody">在你的機器上跑一次，把讀不到、標錯或語意不清的地方告訴我們；每一份回報都讓目錄更貼近真實硬體。</p><a class="text-link" href="#report">使用問題回報 <span>↗</span></a></article>
+</div>
+</section>
+<section aria-labelledby="supportTitle" class="section-block support-section" id="support"><div class="support-card"><svg aria-hidden="true" class="support-star" viewbox="0 0 80 80"><path d="M40 9 49.6 28.5 71 31.6 55.5 46.8 59.2 68.2 40 58.1 20.8 68.2 24.5 46.8 9 31.6 30.4 28.5Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg><div class="support-copy"><div class="section-kicker">SUPPORT OPEN SOURCE</div><h2 data-report-i18n="supportTitle" id="supportTitle">一顆 Star，讓更多人找到 XinSpect。</h2><p data-report-i18n="supportIntro">如果這個開源專案對你有幫助，歡迎到 GitHub 給我們一顆 Star。這是收藏與鼓勵，不涉及付款；本站不會代你操作。</p><a class="button report-primary" href="https://github.com/Xinglanclever/XinSpect" id="supportGitHub" rel="noopener noreferrer" target="_blank"><span data-report-i18n="supportAction">到 GitHub 為 XinSpect 點 Star</span><span aria-hidden="true">↗</span></a><p class="report-hint" data-report-i18n="supportNote">需要 GitHub 帳戶；請在專案頁親自按下 Star。</p></div></div></section><footer class="page-footer"><div class="footer-row"><div class="footer-brand"><img alt="" aria-hidden="true" class="brand-mark small-mark" src="./assets/xinspect-brand-blue.png"/><span><strong>XinSpect「另種可能」</strong><small data-i18n="footerPhrase">讓事實有來源，讓未知保持未知。</small></span></div>
 <div class="footer-links"><a data-i18n="footerGithub" href="https://github.com/Xinglanclever/XinSpect" rel="noopener noreferrer" target="_blank">GitHub 專案 ↗</a><a data-i18n="footerDocs" href="#docs">文件索引 ↗</a><a data-i18n="footerLatest" href="https://github.com/Xinglanclever/XinSpect/releases/tag/v3.15" rel="noopener noreferrer" target="_blank">官方發布頁 ↗</a></div>
 <div class="footer-bottom"><span data-i18n="footerSource">內容依 v3.15 Release、不可變 README、對應原始碼與測試紀錄整理；平台、權限、驅動及硬體會影響實際讀值。</span><span data-i18n="licenseFooter">v3.15 LICENSE · GNU AGPL v3 · Windows x64</span></div>
 </div><section aria-labelledby="neutralityTitle" class="neutrality-notice" id="neutralityNotice"><h2 data-i18n="neutralityTitle" id="neutralityTitle">立場說明</h2><p data-i18n="neutralityText">本網站與 XinSpect 軟體無任何政治立場；內容僅用於技術資訊、產品說明與工程討論。</p><p data-i18n="neutralityNoDefault">本站不預設任何政治立場。</p></section><section aria-labelledby="legalTitle" class="legal-notice" id="legalNotice"><h2 data-i18n="legalTitle" id="legalTitle">法律與資料處理說明</h2><p data-i18n="legalHosting">本站部署於 Cloudflare Workers 全球網路。依 Cloudflare 官方文件，Workers 預設在接近請求的位置執行，靜態資產亦由接近請求的位置提供；實際路由與處理方式取決於服務及網站設定，不代表伺服器固定於任何單一國家。</p><p data-i18n="legalResponsibility">本網站的營運與資料處理須遵守適用法律。法規適用、跨境處理及供應商處理細節，應參照 Cloudflare 官方政策與本網站實際設定；供應商的政策或條款，不構成本網站已取得法律合規或資料保護認證的保證。</p><p data-i18n="legalPractical">本介紹網站不掃描裝置硬體；語言與主題偏好儲存在你的瀏覽器。載入網站會向 Cloudflare 發出網路請求，連線與請求資訊可能依供應商政策及網站設定被處理。GitHub 等外部網站各有其政策。</p><div class="legal-links"><a data-i18n="legalPlacementLink" href="https://developers.cloudflare.com/workers/configuration/placement/" rel="noopener noreferrer" target="_blank">Cloudflare 官方執行位置說明</a><a data-i18n="legalPrivacyLink" href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer" target="_blank">Cloudflare 官方隱私政策</a></div></section></footer>

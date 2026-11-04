@@ -11,3 +11,7 @@ _live.html
 gemini-prompt.txt
 gemini-answer.md
 gemini-swiss-raw.md
+_add_i18n.py
+_spread-*.png
+_spread-*.jpg
+_live-*.png
