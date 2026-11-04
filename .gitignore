@@ -1,0 +1,10 @@
+# Local working artifacts
+.wrangler/
+node_modules/
+
+# Screenshots & Gemini working files (not part of the site)
+_shot-*.png
+_mid2.png
+gemini-prompt.txt
+gemini-answer.md
+gemini-swiss-raw.md
