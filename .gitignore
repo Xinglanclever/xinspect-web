@@ -5,6 +5,9 @@ node_modules/
 # Screenshots & Gemini working files (not part of the site)
 _shot-*.png
 _mid2.png
+_rev-*.png
+_v2-*.png
+_live.html
 gemini-prompt.txt
 gemini-answer.md
 gemini-swiss-raw.md
